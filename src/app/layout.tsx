@@ -26,7 +26,6 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<title>dh.</title>
 				<meta name="description" content="Desmond Hiew" />
 				<meta name="theme-color" content="#000000" />
 				<meta name="color-scheme" content="light dark" />
@@ -36,6 +35,7 @@ export default function RootLayout({
 				<meta property="og:url" content="https://desmondhiew.cc" />
 				<meta property="og:type" content="website" />
 				<meta property="og:site_name" content="Desmond Hiew" />
+				<title>dh.</title>
 			</head>
 
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>

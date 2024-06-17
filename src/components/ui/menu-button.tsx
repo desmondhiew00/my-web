@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { type SVGMotionProps, type Transition, motion } from "framer-motion";
 import React from "react";
 
@@ -66,7 +67,7 @@ const MenuButton = ({
 	const unitWidth = (unitHeight * (width as number)) / (height as number);
 
 	return (
-		<div className={className} onClick={onClick}>
+		<div className={cn("cursor-pointer", className)} onClick={onClick}>
 			<motion.svg
 				viewBox={`0 0 ${unitWidth} ${unitHeight}`}
 				overflow="visible"

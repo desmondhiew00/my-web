@@ -32,17 +32,17 @@ import { useBackgroundTitle } from "../background-title";
 import { useNavBarFunctions } from "./navbar";
 
 const skills = [
-	{ name: "react.tsx", Icon: Reactjs },
-	{ name: "typescript.ts", Icon: Typescript },
 	{ name: "javascript.js", Icon: Js },
-	{ name: "graphql.gql", Icon: Graphql },
-	{ name: "next.js", Icon: Nextjs },
+	{ name: "typescript.ts", Icon: Typescript },
 	{ name: "node.js", Icon: Nodejs },
-	{ name: "nest.js", Icon: Nestjs },
 	{ name: "index.html", Icon: Html5 },
 	{ name: "style.css", Icon: Css3 },
-	{ name: "aws.cloud", Icon: Aws },
 	{ name: "mysql.sql", Icon: MySQL },
+	{ name: "react.tsx", Icon: Reactjs },
+	{ name: "graphql.gql", Icon: Graphql },
+	{ name: "next.js", Icon: Nextjs },
+	{ name: "nest.js", Icon: Nestjs },
+	{ name: "aws.cloud", Icon: Aws },
 ];
 
 const languages = [

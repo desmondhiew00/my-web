@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export const BentoGrid = ({
 	className,
@@ -14,19 +15,15 @@ export const BentoGrid = ({
 	);
 };
 
-export const BentoGridItem = ({
-	className,
-	title,
-	description,
-	header,
-	icon,
-}: {
+interface BentoGridItemProps {
 	className?: string;
 	title?: string | React.ReactNode;
 	description?: string | React.ReactNode;
 	header?: React.ReactNode;
 	icon?: React.ReactNode;
-}) => {
+	image?: string;
+}
+export const BentoGridItem: React.FC<BentoGridItemProps> = ({ className, title, description, header, icon, image }) => {
 	return (
 		<div
 			className={cn(
@@ -34,7 +31,19 @@ export const BentoGridItem = ({
 				className,
 			)}
 		>
-			{header}
+			{image ? (
+				<div className="h-full w-full min-h-[8em] relative">
+					<Image
+						alt="bento-item-image"
+						className="object-cover rounded"
+						src={image}
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+					/>
+				</div>
+			) : (
+				header
+			)}
 			<div className="group-hover/bento:translate-x-2 transition duration-200">
 				{icon}
 				<div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">{title}</div>
@@ -43,3 +52,7 @@ export const BentoGridItem = ({
 		</div>
 	);
 };
+
+export const SkeletonImage = () => (
+	<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black" />
+);
