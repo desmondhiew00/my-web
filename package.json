@@ -1,33 +1,35 @@
 {
-  "name": "my-web",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "biome lint ./src",
-    "format": "biome format ./src"
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "dayjs": "^1.11.11",
-    "framer-motion": "12.0.0-alpha.0",
-    "mini-svg-data-uri": "^1.4.4",
-    "next": "15.0.0-rc.0",
-    "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
-    "tailwind-merge": "^2.3.0",
-    "zustand": "^4.5.2"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.8.1",
-    "@svgr/webpack": "^8.1.0",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+	"name": "my-web",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build": "next build",
+		"dev": "next dev",
+		"dev:sst": "sst dev next dev",
+		"format": "biome format ./src",
+		"lint": "biome lint ./src",
+		"start": "next start"
+	},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"dayjs": "^1.11.11",
+		"framer-motion": "12.0.0-alpha.0",
+		"mini-svg-data-uri": "^1.4.4",
+		"next": "15.0.0-rc.0",
+		"react": "19.0.0-rc-f994737d14-20240522",
+		"react-dom": "19.0.0-rc-f994737d14-20240522",
+		"sst": "ion",
+		"tailwind-merge": "^2.3.0",
+		"zustand": "^4.5.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.1",
+		"@svgr/webpack": "^8.1.0",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"postcss": "^8",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }
