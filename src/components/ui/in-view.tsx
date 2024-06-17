@@ -1,4 +1,4 @@
-import { type UseInViewOptions, delay, motion, useAnimation, useInView } from "framer-motion";
+import { type UseInViewOptions, motion, useAnimation, useInView } from "framer-motion";
 import { type PropsWithChildren, useEffect, useRef } from "react";
 
 interface Props extends UseInViewOptions {

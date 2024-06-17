@@ -5,7 +5,7 @@ import { Section } from "@/components/section";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import { useAppStore } from "@/store/app.store";
 import { useBackgroundTitle } from "../background-title";
-import { BentoGrid, BentoGridItem, type BentoGridItemProps, SkeletonImage } from "../ui/bento-grid";
+import { BentoGrid, BentoGridItem, type BentoGridItemProps } from "../ui/bento-grid";
 import { InView } from "../ui/in-view";
 import { useNavBarFunctions } from "./navbar";
 
@@ -118,8 +118,7 @@ const getData = (color: string): BentoGridItemProps[] => {
 			Key features include multi-tenant support with separate databases, ticket & sales system, email account integration,
 			PBX call system using 3CX, live chat between agents and embed live chat between agent and customer.`,
 			image: "/images/works-crm.jpeg",
-			// className: "md:col-span-2",
-			className: "col-span-2",
+			className: "md:col-span-2",
 			icon: (
 				<IconContainer>
 					<Javascript {...iconProps} />

@@ -16,18 +16,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<AppContext.Provider value={{ mainRef }}>
-			<main
-				ref={mainRef}
-				style={{
-					overflowY: "scroll",
-					minHeight: "100vh",
-					maxHeight: "100vh",
-					// scrollSnapType: "y mandatory",
-					scrollBehavior: "smooth",
-				}}
-			>
-				<TracingBeam containerRef={mainRef}>{children}</TracingBeam>
-			</main>
+			<TracingBeam containerRef={mainRef}>{children}</TracingBeam>
 		</AppContext.Provider>
 	);
 };

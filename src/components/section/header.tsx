@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 import { Logo } from "../logo";
 import { useNavBarFunctions } from "./navbar";
 
@@ -13,11 +12,14 @@ import { MenuButton } from "../ui/menu-button";
 interface Props {
 	className?: string;
 }
-export const HEADER_HEIGHT = "h-[64px] sm:h-[80px]";
+
+export const HEADER_HEIGHT = {
+	mt: "mt-[64px] sm:mt-[80px]",
+	h: "h-[64px] sm:h-[80px]",
+};
 
 export const Header: React.FC<Props> = ({ className }) => {
 	const { collapsed } = useAppStore();
-	// const [open, setOpen] = useState(true);
 	const theme = usePrefersColorScheme();
 	const isLargeScreen = useMediaQuery("(min-width: 640px)");
 	const navbar = useNavBarFunctions();
@@ -25,10 +27,9 @@ export const Header: React.FC<Props> = ({ className }) => {
 	return (
 		<>
 			<div
-				style={{ width: "calc(100% - 20px)" }}
 				className={cn(
-					HEADER_HEIGHT,
-					"pl-[24px] sm:pl-[32px] flex justify-between items-center fixed z-20 top-0",
+					HEADER_HEIGHT.h,
+					"pl-[24px] sm:pl-[32px] pr-4 w-full flex justify-between items-center fixed z-20 top-0",
 					"glassmorphism",
 					className,
 				)}

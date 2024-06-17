@@ -11,7 +11,9 @@
 				"noArrayIndexKey": "off"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "off"
+				"useExhaustiveDependencies": "off",
+				"noUnusedVariables": "warn",
+				"noUnusedImports": "warn"
 			},
 			"style": {
 				"useNumberNamespace": "off"

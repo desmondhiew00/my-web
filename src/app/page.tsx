@@ -16,8 +16,8 @@ export default function Root() {
 			<Home />
 			<Skills />
 			<Works />
-
 			<Footer />
+
 			<BackgroundTitle />
 		</Providers>
 	);

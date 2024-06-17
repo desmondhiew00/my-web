@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { type SVGMotionProps, type Transition, motion } from "framer-motion";
-import React from "react";
 
 interface Props extends SVGMotionProps<never> {
 	isOpen?: boolean;

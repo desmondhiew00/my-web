@@ -5,7 +5,6 @@ import { InView } from "@/components/ui/in-view";
 import Typewriter from "@/components/ui/typewriter";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import dayjs from "dayjs";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import Github from "@/assets/tech-stacks/github.svg";
@@ -15,6 +14,7 @@ import { useAppStore } from "@/store/app.store";
 import { useBackgroundTitle } from "../background-title";
 import { FinderWindow } from "../ui/finder-window";
 import { LinkButton } from "../ui/link-button";
+import { HEADER_HEIGHT } from "./header";
 import { useNavBarFunctions } from "./navbar";
 
 export function Home() {
@@ -29,7 +29,7 @@ export function Home() {
 	}, []);
 
 	return (
-		<Section id="home" className="min-h-screen">
+		<Section id="home" className={HEADER_HEIGHT.mt}>
 			<div className="mt-5 mb-8">
 				<InView
 					amount="some"
