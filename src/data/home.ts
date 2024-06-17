@@ -1,5 +1,3 @@
-"use client";
-
 export default {
 	"about-title": "Hello 世界!",
 	"about-description": [

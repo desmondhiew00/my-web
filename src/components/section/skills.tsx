@@ -1,7 +1,7 @@
 "use client";
 
-import { InView } from "@/components/common/in-view";
 import { Section } from "@/components/section";
+import { InView } from "@/components/ui/in-view";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import { animate, inView, motion } from "framer-motion";
 

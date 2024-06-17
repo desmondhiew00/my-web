@@ -1,7 +1,7 @@
 "use client";
 
-import { InView } from "@/components/common/in-view";
 import { Section } from "@/components/section";
+import { InView } from "@/components/ui/in-view";
 import Typewriter from "@/components/ui/typewriter";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import dayjs from "dayjs";
@@ -10,10 +10,11 @@ import { useEffect, useState } from "react";
 
 import Github from "@/assets/tech-stacks/github.svg";
 import LinkedIn from "@/assets/tech-stacks/linkedin.svg";
-import data from "@/data/texts";
+import data from "@/data/home";
 import { useAppStore } from "@/store/app.store";
 import { useBackgroundTitle } from "../background-title";
 import { FinderWindow } from "../ui/finder-window";
+import { LinkButton } from "../ui/link-button";
 import { useNavBarFunctions } from "./navbar";
 
 export function Home() {
@@ -40,17 +41,12 @@ export function Home() {
 						bgTitle.changeText("Desmond Hiew");
 					}}
 				>
-					<motion.a whileTap={{ scale: 0.9 }} rel="noreferrer" target="_blank" href="https://github.com/desmondhiew00">
+					<LinkButton href="https://github.com/desmondhiew00">
 						<Github className="w-5 h-5" color={theme === "dark" ? "#fff" : "#000"} />
-					</motion.a>
-					<motion.a
-						whileTap={{ scale: 0.9 }}
-						rel="noreferrer"
-						target="_blank"
-						href="https://www.linkedin.com/in/desmond-hiew-ab1a201b1"
-					>
+					</LinkButton>
+					<LinkButton href="https://www.linkedin.com/in/desmond-hiew-ab1a201b1">
 						<LinkedIn className="w-6 h-6" color="#0a66c2" />
-					</motion.a>
+					</LinkButton>
 				</InView>
 
 				{time && <div className="mb-2 text-[10px] sm:text-xs text-gray-500">Last login: {time} on desmond hiew</div>}

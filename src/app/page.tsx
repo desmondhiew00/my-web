@@ -1,4 +1,5 @@
 import { BackgroundTitle } from "@/components/background-title";
+import { Footer } from "@/components/section/footer";
 import { Header } from "@/components/section/header";
 import { Home } from "@/components/section/home";
 import { NavBar } from "@/components/section/navbar";
@@ -16,6 +17,7 @@ export default function Root() {
 			<Skills />
 			<Works />
 
+			<Footer />
 			<BackgroundTitle />
 		</Providers>
 	);
