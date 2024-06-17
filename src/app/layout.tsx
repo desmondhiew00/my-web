@@ -32,7 +32,7 @@ export default function RootLayout({
 				<meta property="og:title" content="dh." />
 				<meta property="og:description" content="Desmond Hiew" />
 				<meta property="og:image" content="/avatar.jpeg" />
-				<meta property="og:url" content="https://desmondhiew.cc" />
+				<meta property="og:url" content="https://desmondhiew.com" />
 				<meta property="og:type" content="website" />
 				<meta property="og:site_name" content="Desmond Hiew" />
 				<title>dh.</title>
