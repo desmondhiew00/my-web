@@ -10,7 +10,8 @@
 		"start": "next start",
 		"lint": "biome lint ./src",
 		"typecheck": "tsc --noEmit",
-		"format": "biome format ./src"
+		"format": "biome format ./src",
+		"deploy": "sst deploy"
 	},
 	"dependencies": {
 		"clsx": "^2.1.1",
