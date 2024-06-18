@@ -40,10 +40,10 @@ export function Home() {
 						bgTitle.changeText("Desmond Hiew");
 					}}
 				>
-					<LinkButton href="https://github.com/desmondhiew00">
+					<LinkButton href="https://github.com/desmondhiew00" aria-label="github">
 						<Github className="w-5 h-5" color={theme === "dark" ? "#fff" : "#000"} />
 					</LinkButton>
-					<LinkButton href="https://www.linkedin.com/in/desmond-hiew-ab1a201b1">
+					<LinkButton href="https://www.linkedin.com/in/desmond-hiew-ab1a201b1" aria-label="linkedin">
 						<LinkedIn className="w-6 h-6" color="#0a66c2" />
 					</LinkButton>
 				</InView>

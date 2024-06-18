@@ -17,6 +17,7 @@ export const NavBar = () => {
 			<a href={`#${SectionType.HOME}`}>
 				<TextButton
 					id={`nav-item-${SectionType.HOME}`}
+					type="div"
 					className="nav-button"
 					text="Home"
 					delay={Math.random() * 0.8}
@@ -25,6 +26,7 @@ export const NavBar = () => {
 			<a href={`#${SectionType.SKILLS}`}>
 				<TextButton
 					id={`nav-item-${SectionType.SKILLS}`}
+					type="div"
 					className="nav-button"
 					text="Skills"
 					delay={Math.random() * 0.8}
@@ -34,6 +36,7 @@ export const NavBar = () => {
 			<a href={`#${SectionType.WORKS}`}>
 				<TextButton
 					id={`nav-item-${SectionType.WORKS}`}
+					type="div"
 					className="nav-button"
 					text="Works"
 					delay={Math.random() * 0.8}

@@ -3,9 +3,10 @@ import type { PropsWithChildren } from "react";
 
 interface LinkButtonProps {
 	href: string;
+	ariaLabel?: string;
 }
 
-export const LinkButton: React.FC<PropsWithChildren<LinkButtonProps>> = ({ href, children }) => {
+export const LinkButton: React.FC<PropsWithChildren<LinkButtonProps>> = ({ href, ariaLabel, children }) => {
 	return (
 		<motion.a
 			whileHover={{
@@ -16,6 +17,7 @@ export const LinkButton: React.FC<PropsWithChildren<LinkButtonProps>> = ({ href,
 			rel="noreferrer"
 			target="_blank"
 			href={href}
+			aria-label={ariaLabel}
 		>
 			{children}
 		</motion.a>
