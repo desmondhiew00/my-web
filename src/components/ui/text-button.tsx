@@ -2,15 +2,17 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 interface Props {
+	id?: string;
 	text: string;
 	delay?: number;
 	style?: object;
 	className?: string;
 	onClick?: () => void;
 }
-export const TextButton: React.FC<Props> = ({ text, onClick, delay = 0, className, style }) => {
+export const TextButton: React.FC<Props> = ({ id, text, delay = 0, className, style, onClick }) => {
 	return (
 		<motion.button
+			id={id}
 			className={cn("relative w-fit", className)}
 			whileHover={{ x: 10, transition: { duration: 0.3 } }}
 			whileTap={{ scale: 0.9 }}

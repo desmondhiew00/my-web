@@ -23,7 +23,7 @@ export const Section: React.FC<PropsWithChildren<Props>> = ({ children, classNam
 			id={id}
 			className={cn(
 				"ml-10 sm:ml-16 pr-6 min-h-screen relative",
-				HEADER_HEIGHT.pt,
+				HEADER_HEIGHT.mt,
 				// height > 648 ? "snap-center" : "",
 				className,
 			)}

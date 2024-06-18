@@ -15,14 +15,29 @@ export const NavBar = () => {
 	return (
 		<motion.div id="nav-buttons" className="flex flex-col gap-4 fixed bottom-[24px] left-5 z-40">
 			<a href={`#${SectionType.HOME}`}>
-				<TextButton className="nav-button" text="Home" delay={Math.random() * 0.8} />
+				<TextButton
+					id={`nav-item-${SectionType.HOME}`}
+					className="nav-button"
+					text="Home"
+					delay={Math.random() * 0.8}
+				/>
 			</a>
 			<a href={`#${SectionType.SKILLS}`}>
-				<TextButton className="nav-button" text="Skills" delay={Math.random() * 0.8} />
+				<TextButton
+					id={`nav-item-${SectionType.SKILLS}`}
+					className="nav-button"
+					text="Skills"
+					delay={Math.random() * 0.8}
+				/>
 			</a>
 
 			<a href={`#${SectionType.WORKS}`}>
-				<TextButton className="nav-button" text="Works" delay={Math.random() * 0.8} />
+				<TextButton
+					id={`nav-item-${SectionType.WORKS}`}
+					className="nav-button"
+					text="Works"
+					delay={Math.random() * 0.8}
+				/>
 			</a>
 		</motion.div>
 	);
@@ -50,7 +65,7 @@ export const useNavBarFunctions = () => {
 		for (const ele of navButtons) {
 			animate(ele, { opacity: 1 });
 		}
-		const navEle = document.getElementById(section);
+		const navEle = document.getElementById(`nav-item-${section}`);
 		if (navEle) animate(navEle, { opacity: 0.3 });
 	};
 
