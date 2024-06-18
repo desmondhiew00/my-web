@@ -1,6 +1,6 @@
 "use client";
 
-import { Section } from "@/components/section";
+import { Section, SectionType } from "@/components/section";
 // import worksData from "@/data/works";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import { useAppStore } from "@/store/app.store";
@@ -31,12 +31,12 @@ export function Works() {
 	const iconColor = theme === "light" ? "#000" : "#fff";
 
 	return (
-		<Section id="works" className="relative pb-[120px]" title="Works">
+		<Section id={SectionType.WORKS} className="relative pb-[120px]" title="Works">
 			<InView
 				amount="some"
 				onEnter={() => {
-					updateCurrentSection("works");
-					navbar.setActive("works");
+					updateCurrentSection(SectionType.WORKS);
+					navbar.setActive(SectionType.WORKS);
 					navbar.trigger(false);
 					bgTitle.changeText("Works");
 				}}

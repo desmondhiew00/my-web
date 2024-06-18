@@ -3,7 +3,7 @@
 import { TextButton } from "@/components/ui/text-button";
 import { useAppStore } from "@/store/app.store";
 import { animate, motion } from "framer-motion";
-import type { SectionType } from "../section";
+import { SectionType } from "../section";
 
 export enum NavButton {
 	HOME = "home-nav",
@@ -12,34 +12,18 @@ export enum NavButton {
 }
 
 export const NavBar = () => {
-	const scrollTo = (id: SectionType) => {
-		const element = document.getElementById(id);
-		if (element) element.scrollIntoView({ behavior: "smooth" });
-	};
-
 	return (
 		<motion.div id="nav-buttons" className="flex flex-col gap-4 fixed bottom-[24px] left-5 z-40">
-			<TextButton
-				id={NavButton.HOME}
-				className="nav-button"
-				text="Home"
-				delay={Math.random() * 0.8}
-				onClick={() => scrollTo("home")}
-			/>
-			<TextButton
-				id={NavButton.SKILLS}
-				className="nav-button"
-				text="Skills"
-				delay={Math.random() * 0.8}
-				onClick={() => scrollTo("skills")}
-			/>
-			<TextButton
-				id={NavButton.WORKS}
-				className="nav-button"
-				text="Works"
-				delay={Math.random() * 0.8}
-				onClick={() => scrollTo("works")}
-			/>
+			<a href={`#${SectionType.HOME}`}>
+				<TextButton className="nav-button" text="Home" delay={Math.random() * 0.8} />
+			</a>
+			<a href={`#${SectionType.SKILLS}`}>
+				<TextButton className="nav-button" text="Skills" delay={Math.random() * 0.8} />
+			</a>
+
+			<a href={`#${SectionType.WORKS}`}>
+				<TextButton className="nav-button" text="Works" delay={Math.random() * 0.8} />
+			</a>
 		</motion.div>
 	);
 };
@@ -66,22 +50,9 @@ export const useNavBarFunctions = () => {
 		for (const ele of navButtons) {
 			animate(ele, { opacity: 1 });
 		}
-		const navEle = document.getElementById(getNavButtonId(section));
+		const navEle = document.getElementById(section);
 		if (navEle) animate(navEle, { opacity: 0.3 });
 	};
 
 	return { trigger, setActive };
-};
-
-const getNavButtonId = (id: SectionType) => {
-	switch (id) {
-		case "home":
-			return NavButton.HOME;
-		case "skills":
-			return NavButton.SKILLS;
-		case "works":
-			return NavButton.WORKS;
-		default:
-			return NavButton.HOME;
-	}
 };

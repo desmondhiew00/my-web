@@ -1,6 +1,6 @@
 "use client";
 
-import { Section } from "@/components/section";
+import { Section, SectionType } from "@/components/section";
 import { InView } from "@/components/ui/in-view";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import { animate, inView, motion } from "framer-motion";
@@ -75,7 +75,7 @@ export function Skills() {
 	}, []);
 
 	return (
-		<Section id="skills" title="Skills">
+		<Section id={SectionType.SKILLS} title="Skills">
 			<InView
 				amount="some"
 				className="mt-4 space-y-8"
@@ -93,8 +93,8 @@ export function Skills() {
 					},
 				}}
 				onEnter={() => {
-					updateCurrentSection("skills");
-					navbar.setActive("skills");
+					updateCurrentSection(SectionType.SKILLS);
+					navbar.setActive(SectionType.SKILLS);
 					navbar.trigger(false);
 					bgTitle.changeText("Skills");
 				}}

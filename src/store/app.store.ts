@@ -1,4 +1,4 @@
-import type { SectionType } from "@/components/section";
+import { SectionType } from "@/components/section";
 import { create } from "zustand";
 
 interface IAppStore {
@@ -13,7 +13,7 @@ interface IAppStore {
 
 export const useAppStore = create<IAppStore>((set) => ({
 	bgTitle: "Desmond Hiew",
-	currentSection: "home",
+	currentSection: SectionType.HOME,
 	collapsed: false,
 
 	updateBgTitle: (text: string) => set({ bgTitle: text }),

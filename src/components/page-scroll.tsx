@@ -2,20 +2,20 @@
 
 import { useAppStore } from "@/store/app.store";
 import { motion } from "framer-motion";
-import { Sections } from "./section";
 
 import ArrowDown from "@/assets/arrow-down.svg";
 import ArrowUp from "@/assets/arrow-up.svg";
+import { SectionTypes } from "./section";
 
 export const PageScroll = () => {
 	const { currentSection } = useAppStore();
-	const hasPrev = Sections.indexOf(currentSection) > 0;
-	const hasNext = Sections.indexOf(currentSection) < Sections.length - 1;
+	const hasPrev = SectionTypes.indexOf(currentSection) > 0;
+	const hasNext = SectionTypes.indexOf(currentSection) < SectionTypes.length - 1;
 
 	const onScrollUp = () => {
-		const index = Sections.indexOf(currentSection);
+		const index = SectionTypes.indexOf(currentSection);
 		if (index > 0) {
-			const prevSection = document.getElementById(Sections[index - 1]);
+			const prevSection = document.getElementById(SectionTypes[index - 1]);
 			if (prevSection) prevSection.scrollIntoView({ behavior: "smooth" });
 		}
 	};
@@ -25,7 +25,7 @@ export const PageScroll = () => {
 			onScrollUp();
 			return;
 		}
-		const nextSection = document.getElementById(Sections[Sections.indexOf(currentSection) + 1]);
+		const nextSection = document.getElementById(SectionTypes[SectionTypes.indexOf(currentSection) + 1]);
 		if (nextSection) nextSection.scrollIntoView({ behavior: "smooth" });
 	};
 

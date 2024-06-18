@@ -15,6 +15,7 @@ interface Props {
 
 export const HEADER_HEIGHT = {
 	mt: "mt-[64px] sm:mt-[80px]",
+	pt: "pt-[64px] sm:pt-[80px]",
 	h: "h-[64px] sm:h-[80px]",
 };
 

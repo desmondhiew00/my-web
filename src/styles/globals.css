@@ -25,6 +25,10 @@
   background: rgb(14 165 233 / 0.2);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

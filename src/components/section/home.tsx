@@ -1,6 +1,6 @@
 "use client";
 
-import { Section } from "@/components/section";
+import { Section, SectionType } from "@/components/section";
 import { InView } from "@/components/ui/in-view";
 import Typewriter from "@/components/ui/typewriter";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
@@ -14,7 +14,6 @@ import { useAppStore } from "@/store/app.store";
 import { useBackgroundTitle } from "../background-title";
 import { FinderWindow } from "../ui/finder-window";
 import { LinkButton } from "../ui/link-button";
-import { HEADER_HEIGHT } from "./header";
 import { useNavBarFunctions } from "./navbar";
 
 export function Home() {
@@ -29,14 +28,14 @@ export function Home() {
 	}, []);
 
 	return (
-		<Section id="home" className={HEADER_HEIGHT.mt}>
+		<Section id={SectionType.HOME}>
 			<div className="mt-5 mb-8">
 				<InView
 					amount="some"
 					className="mb-5 flex gap-3 items-center"
 					onEnter={() => {
-						updateCurrentSection("home");
-						navbar.setActive("home");
+						updateCurrentSection(SectionType.HOME);
+						navbar.setActive(SectionType.HOME);
 						navbar.trigger(true);
 						bgTitle.changeText("Desmond Hiew");
 					}}

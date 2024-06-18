@@ -1,11 +1,15 @@
 "use client";
 
-import { useScreenSize } from "@/hooks/use-screen-size";
 import { cn } from "@/lib/utils";
 import type { PropsWithChildren } from "react";
+import { HEADER_HEIGHT } from "./section/header";
 
-export type SectionType = "home" | "skills" | "works";
-export const Sections: SectionType[] = ["home", "skills", "works"];
+export enum SectionType {
+	HOME = "home",
+	SKILLS = "skills",
+	WORKS = "works",
+}
+export const SectionTypes: SectionType[] = [SectionType.HOME, SectionType.SKILLS, SectionType.WORKS];
 
 interface Props {
 	id: SectionType;
@@ -13,11 +17,16 @@ interface Props {
 	title?: string;
 }
 export const Section: React.FC<PropsWithChildren<Props>> = ({ children, className, id, title }) => {
-	const { height } = useScreenSize();
+	// const { height } = useScreenSize();
 	return (
 		<section
 			id={id}
-			className={cn("ml-10 sm:ml-16 pr-6 min-h-screen relative", height > 648 ? "snap-center" : "", className)}
+			className={cn(
+				"ml-10 sm:ml-16 pr-6 min-h-screen relative",
+				HEADER_HEIGHT.pt,
+				// height > 648 ? "snap-center" : "",
+				className,
+			)}
 		>
 			{title && (
 				<div className="relative mb-5 w-fit px-10 py-2 rounded-md">
