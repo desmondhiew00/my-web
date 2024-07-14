@@ -1,29 +1,41 @@
 import type { Metadata } from "next";
+import { getLocale, getMessages } from "next-intl/server";
+import { Stick } from "next/font/google";
 import localFont from "next/font/local";
 
 import "@/styles/globals.css";
+import { cn } from "@/lib/utils";
+import { NextIntlClientProvider } from "next-intl";
 
 const geistSans = localFont({
-	src: "../styles/fonts/GeistVF.woff",
+	src: "../src/styles/fonts/GeistVF.woff",
 	variable: "--font-geist-sans",
 });
 const geistMono = localFont({
-	src: "../styles/fonts/GeistMonoVF.woff",
+	src: "../src/styles/fonts/GeistMonoVF.woff",
 	variable: "--font-geist-mono",
+});
+const jpFont = Stick({
+	subsets: ["latin"],
+	display: "swap",
+	weight: ["400"],
 });
 
 export const metadata: Metadata = {
 	title: "desmondhiew",
-	description: "Full-stack developer, making things works with code.",
+	description: "Full-stack developer, making things works with code. (desmondhiew)",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const locale = await getLocale();
+	const messages = await getMessages();
+
 	return (
-		<html lang="en">
+		<html lang={locale}>
 			<head>
 				<meta name="description" content={metadata.description || ""} />
 				<meta name="theme-color" content="#000000" />
@@ -41,7 +53,14 @@ export default function RootLayout({
 				<meta name="twitter:description" content="desmondhiew's hello world" />
 			</head>
 
-			<body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+			<body
+				className={cn(`${geistSans.variable} ${geistMono.variable}`, locale === "jp" ? jpFont.className : "")}
+				style={{
+					fontFamily: `${geistMono.style.fontFamily}, ${jpFont.style.fontFamily}`,
+				}}
+			>
+				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+			</body>
 		</html>
 	);
 }

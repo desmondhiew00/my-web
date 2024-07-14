@@ -3,6 +3,7 @@
 import { TextButton } from "@/components/ui/text-button";
 import { useAppStore } from "@/store/app.store";
 import { animate, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { SectionType } from "../section";
 
 export enum NavButton {
@@ -12,23 +13,24 @@ export enum NavButton {
 }
 
 export const NavBar = () => {
+	const t = useTranslations("NavBar");
 	return (
 		<motion.div id="nav-buttons" className="flex flex-col gap-4 fixed bottom-[24px] left-5 z-40">
 			<a href={`#${SectionType.HOME}`}>
 				<TextButton
 					id={`nav-item-${SectionType.HOME}`}
-					type="div"
 					className="nav-button"
-					text="Home"
+					type="div"
+					text={t("home")}
 					delay={Math.random() * 0.8}
 				/>
 			</a>
 			<a href={`#${SectionType.SKILLS}`}>
 				<TextButton
 					id={`nav-item-${SectionType.SKILLS}`}
-					type="div"
 					className="nav-button"
-					text="Skills"
+					type="div"
+					text={t("skills")}
 					delay={Math.random() * 0.8}
 				/>
 			</a>
@@ -36,9 +38,9 @@ export const NavBar = () => {
 			<a href={`#${SectionType.WORKS}`}>
 				<TextButton
 					id={`nav-item-${SectionType.WORKS}`}
-					type="div"
 					className="nav-button"
-					text="Works"
+					type="div"
+					text={t("works")}
 					delay={Math.random() * 0.8}
 				/>
 			</a>

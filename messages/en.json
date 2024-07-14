@@ -1,0 +1,52 @@
+{
+	"Home": {
+		"last-login": "Last login",
+		"about-title": "Hello 世界.exe",
+		"about-description": "I am a `full-stack developer`,\nwhich basically means I can build an app that’s both beautiful and functional,\nwhile also knowing how to make `coffee` ☕ (if required).\nI specialize in turning caffeine into code, using the magic of `front-end` and `back-end` technologies."
+	},
+	"NavBar": {
+		"home": "Home",
+		"skills": "Skills",
+		"works": "Works"
+	},
+	"Skills": {
+		"title": "Skills",
+		"folder_skill": "desmondhiew/skills",
+		"folder_lang": "desmondhiew/lang",
+		"folder_fuels": "desmondhiew/fuels",
+		"en": "english",
+		"jp": "japanese",
+		"cn": "chinese",
+		"mac": "mac",
+		"coffee": "coffee",
+		"audio": "audio",
+		"anime": "anime"
+	},
+	"Works": {
+		"title": "Works",
+		"more_to_come": "and more to come ...",
+		"project_a": {
+			"title": "Service Provider Management System",
+			"description": "Built a web app for managing and onboarding service providers, featuring authentication with AWS Cognito, Key functionalities include application processes, profile management, email notifications, and reporting."
+		},
+		"project_b": {
+			"title": "Typing Speed Test",
+			"description": "A hobby app that tests your typing speed and accuracy. Built with html, css and jquery."
+		},
+		"project_c": {
+			"title": "Coffee Ordering System",
+			"description": "Built a comprehensive coffee ordering system with an intuitive admin dashboard and backend API for mobile app. Key features include a point and voucher system to enhance customer loyalty."
+		},
+		"project_d": {
+			"title": "CRM System",
+			"description": "Developed a simplified CRM system with an admin dashboard, tenant dashboard, and backend API server. Key features include multi-tenant support with separate databases, ticket & sales system, email account integration, PBX call system using 3CX, live chat between agents and embed live chat between agent and customer."
+		},
+		"project_e": {
+			"title": "Customer Support Management System",
+			"description": "Developed a customer service and technician management platform to streamline operations and enhance service delivery. Integrated with Yeastar PBX to manage calls and support tickets. Mobile app for technicians to manage their work based on support tickets."
+		}
+	},
+	"Footer": {
+		"made": "Made with ☕ by Desmond Hiew"
+	}
+}

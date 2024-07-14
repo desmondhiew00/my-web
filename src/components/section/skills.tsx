@@ -27,43 +27,55 @@ import Typescript from "@/assets/tech-stacks/typescript.svg";
 import Video from "@/assets/video.svg";
 
 import { useAppStore } from "@/store/app.store";
-import { useEffect } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useMemo } from "react";
 import { useBackgroundTitle } from "../background-title";
 import { useNavBarFunctions } from "./navbar";
 
-const skills = [
-	{ name: "javascript.js", Icon: Js },
-	{ name: "typescript.ts", Icon: Typescript },
-	{ name: "node.js", Icon: Nodejs },
-	{ name: "index.html", Icon: Html5 },
-	{ name: "style.css", Icon: Css3 },
-	{ name: "mysql.sql", Icon: MySQL },
-	{ name: "react.tsx", Icon: Reactjs },
-	{ name: "graphql.gql", Icon: Graphql },
-	{ name: "next.js", Icon: Nextjs },
-	{ name: "nest.js", Icon: Nestjs },
-	{ name: "aws.cloud", Icon: Aws },
-];
-
-const languages = [
-	{ name: "english", Icon: I18n },
-	{ name: "chinese", Icon: I18n },
-	{ name: "japanese", Icon: I18n },
-];
-
-const tools = [
-	{ name: "mac", Icon: Macbook },
-	{ name: "coffee", Icon: Coffee },
-	{ name: "audio", Icon: Speaker },
-	{ name: "アニメ", Icon: Video },
-];
-
 export function Skills() {
+	const locale = useLocale();
+	const t = useTranslations("Skills");
 	const { updateCurrentSection } = useAppStore();
 	const theme = usePrefersColorScheme();
 	const navbar = useNavBarFunctions();
 	const bgTitle = useBackgroundTitle();
 	const color = theme === "dark" ? "#fff" : "#000";
+
+	const skills = useMemo(
+		() => [
+			{ name: "javascript.js", Icon: Js },
+			{ name: "typescript.ts", Icon: Typescript },
+			{ name: "node.js", Icon: Nodejs },
+			{ name: "index.html", Icon: Html5 },
+			{ name: "style.css", Icon: Css3 },
+			{ name: "mysql.sql", Icon: MySQL },
+			{ name: "react.tsx", Icon: Reactjs },
+			{ name: "graphql.gql", Icon: Graphql },
+			{ name: "next.js", Icon: Nextjs },
+			{ name: "nest.js", Icon: Nestjs },
+			{ name: "aws.cloud", Icon: Aws },
+		],
+		[],
+	);
+
+	const languages = useMemo(
+		() => [
+			{ name: t("en"), Icon: I18n },
+			{ name: t("cn"), Icon: I18n },
+			{ name: t("jp"), Icon: I18n },
+		],
+		[locale],
+	);
+
+	const tools = useMemo(
+		() => [
+			{ name: t("mac"), Icon: Macbook },
+			{ name: t("coffee"), Icon: Coffee },
+			{ name: t("audio"), Icon: Speaker },
+			{ name: t("anime"), Icon: Video },
+		],
+		[locale],
+	);
 
 	useEffect(() => {
 		inView("#skill-item", ({ target }) => {
@@ -72,10 +84,10 @@ export function Skills() {
 				animate(target, { opacity: 0, x: -50 });
 			};
 		});
-	}, []);
+	}, [locale]);
 
 	return (
-		<Section id={SectionType.SKILLS} title="Skills">
+		<Section id={SectionType.SKILLS} title={t("title")}>
 			<InView
 				amount="some"
 				className="mt-4 space-y-8"
@@ -100,7 +112,7 @@ export function Skills() {
 				}}
 			>
 				<div>
-					<FolderItem text="desmondhiew/skills" Icon={SrcFolder} color={color} />
+					<FolderItem text={t("folder_skill")} Icon={SrcFolder} color={color} />
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
 						{skills.map((data) => (
 							<ListItem key={data.name} color={color} {...data} />
@@ -109,7 +121,7 @@ export function Skills() {
 				</div>
 
 				<div>
-					<FolderItem text="desmondhiew/lang" Icon={I18nFolder} color={color} />
+					<FolderItem text={t("folder_lang")} Icon={I18nFolder} color={color} />
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
 						{languages.map((data) => (
 							<ListItem key={data.name} color={color} {...data} />
@@ -118,7 +130,7 @@ export function Skills() {
 				</div>
 
 				<div>
-					<FolderItem text="desmondhiew/fuels" Icon={ToolsFolder} color={color} />
+					<FolderItem text={t("folder_fuels")} Icon={ToolsFolder} color={color} />
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
 						{tools.map((data) => (
 							<ListItem key={data.name} color={color} {...data} />

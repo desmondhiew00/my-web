@@ -1,22 +1,21 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { Logo } from "../logo";
-import { useNavBarFunctions } from "./navbar";
-
 import useMediaQuery from "@/hooks/use-media-query";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
+import { cn } from "@/lib/utils";
 import { useAppStore } from "@/store/app.store";
+import { Logo } from "../logo";
 import { MenuButton } from "../ui/menu-button";
+import { useNavBarFunctions } from "./navbar";
 
 interface Props {
 	className?: string;
 }
 
 export const HEADER_HEIGHT = {
-	mt: "mt-[64px] sm:mt-[80px]",
-	pt: "pt-[64px] sm:pt-[80px]",
-	h: "h-[64px] sm:h-[80px]",
+	mt: "mt-[52px] sm:mt-[80px]",
+	pt: "pt-[52px] sm:pt-[80px]",
+	h: "h-[52px] sm:h-[80px]",
 };
 
 export const Header: React.FC<Props> = ({ className }) => {
@@ -46,8 +45,8 @@ export const Header: React.FC<Props> = ({ className }) => {
 					color={theme === "dark" ? "#fff" : "#000"}
 					lineProps={{ strokeLinecap: "round" }}
 					transition={{ type: "spring", stiffness: 260, damping: 20 }}
-					width={isLargeScreen ? 20 : 14}
-					height={isLargeScreen ? 20 : 14}
+					width={isLargeScreen ? 20 : 10}
+					height={isLargeScreen ? 20 : 10}
 				/>
 			</div>
 		</>

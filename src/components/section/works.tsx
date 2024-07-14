@@ -21,17 +21,21 @@ import NextJs from "@/assets/tech-stacks/nextjs.svg";
 import NodeJs from "@/assets/tech-stacks/nodejs.svg";
 import React from "@/assets/tech-stacks/reactjs.svg";
 import Typescript from "@/assets/tech-stacks/typescript.svg";
-import type { PropsWithChildren } from "react";
+import { useTranslations } from "next-intl";
+import { type PropsWithChildren, useMemo } from "react";
 
 export function Works() {
+	const t = useTranslations("Works");
 	const { updateCurrentSection } = useAppStore();
 	const theme = usePrefersColorScheme();
 	const navbar = useNavBarFunctions();
 	const bgTitle = useBackgroundTitle();
 	const iconColor = theme === "light" ? "#000" : "#fff";
 
+	const data = useMemo(() => getData(iconColor, t), [iconColor, t]);
+
 	return (
-		<Section id={SectionType.WORKS} className="relative pb-[120px]" title="Works">
+		<Section id={SectionType.WORKS} className="relative pb-[120px]" title={t("title")}>
 			<InView
 				amount="some"
 				onEnter={() => {
@@ -42,28 +46,30 @@ export function Works() {
 				}}
 			>
 				<BentoGrid className="relative mx-0">
-					{getData(iconColor).map((item, i) => (
+					{data.map((item, i) => (
 						<BentoGridItem key={i} {...item} />
 					))}
 				</BentoGrid>
 
 				<div className="ml-5 mt-3">
-					<span>and more to come...</span>
+					<span>{t("more_to_come")}</span>
 				</div>
 			</InView>
 		</Section>
 	);
 }
 
-const getData = (color: string): BentoGridItemProps[] => {
+const getData = (color: string, t: (key: string) => string): BentoGridItemProps[] => {
 	const iconProps = { className: "h-4 w-4", color };
 
 	return [
 		{
-			title: "Service Provider Management System",
-			description: `Built a web app for managing and onboarding service providers, 
-				featuring authentication with AWS Cognito, 
-				Key functionalities include application processes, profile management, email notifications, and reporting.`,
+			// title: "Service Provider Management System",
+			// description: `Built a web app for managing and onboarding service providers,
+			// 	featuring authentication with AWS Cognito,
+			// 	Key functionalities include application processes, profile management, email notifications, and reporting.`,
+			title: t("project_a.title"),
+			description: t("project_a.description"),
 			image: "/images/works-simple-dashboard.jpg",
 			imgAttribution: "Designed by Freepik",
 			className: "md:col-span-1",
@@ -79,8 +85,10 @@ const getData = (color: string): BentoGridItemProps[] => {
 			),
 		},
 		{
-			title: "Typing Speed Test",
-			description: "A hobby app that tests your typing speed and accuracy. Built with html, css and jquery.",
+			// title: "Typing Speed Test",
+			// description: "A hobby app that tests your typing speed and accuracy. Built with html, css and jquery.",
+			title: t("project_b.title"),
+			description: t("project_b.description"),
 			image: "/images/works-typing-speed-test.png",
 			link: "https://typing-test.simplyapp.cc",
 			className: "md:col-span-1",
@@ -94,9 +102,11 @@ const getData = (color: string): BentoGridItemProps[] => {
 			),
 		},
 		{
-			title: "Coffee Ordering System",
-			description: `Built a comprehensive coffee ordering system with an intuitive admin dashboard and backend API for mobile app.
-			Key features include a point and voucher system to enhance customer loyalty.`,
+			// title: "Coffee Ordering System",
+			// description: `Built a comprehensive coffee ordering system with an intuitive admin dashboard and backend API for mobile app.
+			// Key features include a point and voucher system to enhance customer loyalty.`,
+			title: t("project_c.title"),
+			description: t("project_c.description"),
 			image: "/images/works-coffee-ordering.jpg",
 			imgAttribution: "Designed by Freepik",
 			className: "md:col-span-1",
@@ -113,10 +123,12 @@ const getData = (color: string): BentoGridItemProps[] => {
 			),
 		},
 		{
-			title: "CRM System",
-			description: `Developed a simplified CRM system with an admin dashboard, tenant dashboard, and backend API server.
-			Key features include multi-tenant support with separate databases, ticket & sales system, email account integration,
-			PBX call system using 3CX, live chat between agents and embed live chat between agent and customer.`,
+			// title: "CRM System",
+			// description: `Developed a simplified CRM system with an admin dashboard, tenant dashboard, and backend API server.
+			// Key features include multi-tenant support with separate databases, ticket & sales system, email account integration,
+			// PBX call system using 3CX, live chat between agents and embed live chat between agent and customer.`,
+			title: t("project_d.title"),
+			description: t("project_d.description"),
 			image: "/images/works-crm.jpeg",
 			className: "md:col-span-2",
 			icon: (
@@ -129,12 +141,14 @@ const getData = (color: string): BentoGridItemProps[] => {
 			),
 		},
 		{
-			title: "Customer Support Management System",
-			description: `
-			Developed a customer service and technician management platform to streamline operations and enhance service delivery.
-			Integrated with Yeastar PBX to manage calls and support tickets.
-			Mobile app for technicians to manage their work based on support tickets.
-			`,
+			// title: "Customer Support Management System",
+			// description: `
+			// Developed a customer service and technician management platform to streamline operations and enhance service delivery.
+			// Integrated with Yeastar PBX to manage calls and support tickets.
+			// Mobile app for technicians to manage their work based on support tickets.
+			// `,
+			title: t("project_e.title"),
+			description: t("project_e.description"),
 			image: "/images/works-kanban.jpg",
 			className: "md:col-span-1",
 			icon: (

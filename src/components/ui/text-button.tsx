@@ -27,7 +27,7 @@ export const TextButton: React.FC<Props> = ({ type, id, text, delay = 0, classNa
 					animate={{ width: "100%" }}
 					onClick={onClick}
 				>
-					<span className="px-6 no-select">{text}</span>
+					<span className="px-6 no-select whitespace-nowrap">{text}</span>
 				</motion.div>
 				<motion.div
 					className={cn("absolute bg-gray-100 dark:bg-zinc-800 h-full top-0 left-0 opacity-80")}

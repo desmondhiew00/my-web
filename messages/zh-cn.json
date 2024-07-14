@@ -1,0 +1,52 @@
+{
+	"Home": {
+		"last-login": "上次登录时间",
+		"about-title": "你好世界.exe",
+		"about-description": "`全栈开发劳工`，专注于将咖啡因转化为代码。"
+	},
+	"NavBar": {
+		"home": "首页",
+		"skills": "会的",
+		"works": "做过的"
+	},
+	"Skills": {
+		"title": "会的",
+		"folder_skill": "desmondhiew/会的",
+		"folder_lang": "desmondhiew/可以讲的",
+		"folder_fuels": "desmondhiew/燃的",
+		"en": "英",
+		"jp": "日",
+		"cn": "中",
+		"mac": "Mac",
+		"coffee": "咖啡",
+		"audio": "音乐",
+		"anime": "动漫"
+	},
+	"Works": {
+		"title": "做过的",
+		"more_to_come": "还有跟多的otw...",
+		"project_a": {
+			"title": "Service Provider Management System",
+			"description": "使用AWS Cognito进行身份验证的功能，主要功能包括申请流程、资料管理、邮件通知和报告。"
+		},
+		"project_b": {
+			"title": "打字速度测试",
+			"description": "一个测试你的打字速度和准确性的业余应用程序。使用HTML、CSS和jQuery。"
+		},
+		"project_c": {
+			"title": "咖啡订购手机应用",
+			"description": "有积分系统"
+		},
+		"project_d": {
+			"title": "CRM",
+			"description": "简化的CRM系统。主要功能包括使用独立数据库的多租户支持、票务和销售系统、电子邮件账户集成、使用3CX的PBX呼叫系统、代理之间的实时聊天以及代理与客户之间的嵌入式实时聊天。"
+		},
+		"project_e": {
+			"title": "Customer Support Management System",
+			"description": "客户服务和技术人员管理平台"
+		}
+	},
+	"Footer": {
+		"made": "Made with ☕ by Desmond Hiew"
+	}
+}
