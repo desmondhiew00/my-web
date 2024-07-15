@@ -8,6 +8,6 @@ export default getRequestConfig(async () => {
 	const locale = cookie.get("locale")?.value || "en";
 	return {
 		locale,
-		messages: (await import(`../messages/${locale}.json`)).default,
+		messages: (await import(`../translations/${locale}.json`)).default,
 	};
 });

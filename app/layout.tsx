@@ -61,7 +61,7 @@ export default async function RootLayout({
 				}}
 			>
 				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-				<GoogleAnalytics gaId={process.env.GA_ID ?? ""} />
+				<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
 			</body>
 		</html>
 	);

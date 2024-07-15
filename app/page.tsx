@@ -11,7 +11,7 @@ import Providers from "./providers";
 export default function Root() {
 	return (
 		<>
-			<GoogleTagManager gtmId={process.env.GA_ID ?? ""} />
+			<GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
 			<Providers>
 				<Header />
 				<NavBar />
