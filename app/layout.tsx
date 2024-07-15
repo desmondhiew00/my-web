@@ -1,11 +1,12 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Stick } from "next/font/google";
 import localFont from "next/font/local";
 
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
-import { NextIntlClientProvider } from "next-intl";
 
 const geistSans = localFont({
 	src: "../src/styles/fonts/GeistVF.woff",
@@ -60,6 +61,7 @@ export default async function RootLayout({
 				}}
 			>
 				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+				<GoogleAnalytics gaId={process.env.GA_ID ?? ""} />
 			</body>
 		</html>
 	);
