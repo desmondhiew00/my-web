@@ -51,7 +51,7 @@ export function Home() {
 					onEnter={() => {
 						updateCurrentSection(SectionType.HOME);
 						navbar.setActive(SectionType.HOME);
-						navbar.trigger(isLargeScreen);
+						navbar.trigger(true);
 						bgTitle.changeText("Desmond Hiew");
 					}}
 				>
