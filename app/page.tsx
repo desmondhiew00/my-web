@@ -8,8 +8,6 @@ import { Works } from "@/components/section/works";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Providers from "./providers";
 
-export const dynamic = "force-static";
-
 export default function Root() {
 	return (
 		<>
