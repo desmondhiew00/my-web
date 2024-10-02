@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { changeLocale } from "@/actions/cookie";
 import Github from "@/assets/tech-stacks/github.svg";
 import LinkedIn from "@/assets/tech-stacks/linkedin.svg";
-import useMediaQuery from "@/hooks/use-media-query";
 import { useAppStore } from "@/store/app.store";
 import { useLocale, useTranslations } from "next-intl";
 import { useBackgroundTitle } from "../background-title";
@@ -31,7 +30,7 @@ export function Home() {
 	const navbar = useNavBarFunctions();
 	const bgTitle = useBackgroundTitle();
 	const [time, setTime] = useState("");
-	const isLargeScreen = useMediaQuery("(min-width: 640px)");
+	// const isLargeScreen = useMediaQuery("(min-width: 640px)");
 
 	useEffect(() => {
 		dayjs.locale(locale);
