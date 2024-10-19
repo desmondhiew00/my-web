@@ -184,3 +184,5 @@ const getData = (color: string, t: (key: string) => string): BentoGridItemProps[
 const IconContainer: React.FC<PropsWithChildren> = ({ children }) => (
 	<div className="flex items-center gap-2">{children}</div>
 );
+
+export default Works;

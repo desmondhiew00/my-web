@@ -172,3 +172,5 @@ const ListItem = ({ name, Icon, color }: { name: string; Icon: any; color: strin
 		</motion.div>
 	);
 };
+
+export default Skills;
