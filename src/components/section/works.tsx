@@ -21,6 +21,7 @@ import NextJs from "@/assets/tech-stacks/nextjs.svg";
 import NodeJs from "@/assets/tech-stacks/nodejs.svg";
 import React from "@/assets/tech-stacks/reactjs.svg";
 import Typescript from "@/assets/tech-stacks/typescript.svg";
+import VsCode from "@/assets/tech-stacks/vscode.svg";
 import { useTranslations } from "next-intl";
 import { type PropsWithChildren, useMemo } from "react";
 
@@ -160,6 +161,20 @@ const getData = (color: string, t: (key: string) => string): BentoGridItemProps[
 					<Mysql {...iconProps} />
 					<Graphql {...iconProps} />
 					<Firebase {...iconProps} />
+				</IconContainer>
+			),
+		},
+		{
+			// title: VSCode Extension
+			title: t("project_f.title"),
+			description: t("project_f.description"),
+			image: "/images/vscode-singular-plural.png",
+			className: "md:col-span-1",
+			link: "https://marketplace.visualstudio.com/items?itemName=desmondhiew.singular-plural",
+			icon: (
+				<IconContainer>
+					<VsCode {...iconProps} />
+					<Typescript {...iconProps} />
 				</IconContainer>
 			),
 		},

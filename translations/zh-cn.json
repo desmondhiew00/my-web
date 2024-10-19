@@ -44,6 +44,10 @@
 		"project_e": {
 			"title": "Customer Support Management System",
 			"description": "客户服务和技术人员管理平台"
+		},
+		"project_f": {
+			"title": "VSCode Extension",
+			"description": "将单词转换为单数或复数形式的VSCode扩展。"
 		}
 	},
 	"Footer": {

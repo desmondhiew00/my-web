@@ -44,6 +44,10 @@
 		"project_e": {
 			"title": "Customer Support Management System",
 			"description": "Developed a customer service and technician management platform to streamline operations and enhance service delivery. Integrated with Yeastar PBX to manage calls and support tickets. Mobile app for technicians to manage their work based on support tickets."
+		},
+		"project_f": {
+			"title": "VSCode Extension",
+			"description": "Developed a VSCode extension that converts words to singular or plural form."
 		}
 	},
 	"Footer": {
