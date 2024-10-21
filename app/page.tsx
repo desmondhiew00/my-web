@@ -1,4 +1,3 @@
-import { BackgroundTitle } from "@/components/background-title";
 import { Footer } from "@/components/section/footer";
 import { Header } from "@/components/section/header";
 import { Home } from "@/components/section/home";
@@ -13,6 +12,11 @@ const Skills = dynamic(() => import("@/components/section/skills"), {
 });
 
 const Works = dynamic(() => import("@/components/section/works"), {
+	ssr: false,
+	loading: () => <div />,
+});
+
+const BackgroundTitle = dynamic(() => import("@/components/background-title"), {
 	ssr: false,
 	loading: () => <div />,
 });

@@ -43,3 +43,5 @@ export const useBackgroundTitle = () => {
 
 	return { hide, show, changeText };
 };
+
+export default BackgroundTitle;
