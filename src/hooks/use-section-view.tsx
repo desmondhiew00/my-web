@@ -9,32 +9,32 @@ import { useEffect, useRef } from "react";
  * @param callback
  */
 export const useSectionView = (callback?: (section: SectionType) => void) => {
-	const store = useAppStore();
-	const observer = useRef<IntersectionObserver>();
+  const store = useAppStore();
+  const observer = useRef<IntersectionObserver>(null);
 
-	useEffect(() => {
-		const handleIntersection: IntersectionObserverCallback = (entries) => {
-			for (const entry of entries) {
-				if (entry.isIntersecting) {
-					store.updateCurrentSection(entry.target.id as SectionType);
-					callback?.(entry.target.id as SectionType);
-				}
-			}
-		};
+  useEffect(() => {
+    const handleIntersection: IntersectionObserverCallback = (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          store.updateCurrentSection(entry.target.id as SectionType);
+          callback?.(entry.target.id as SectionType);
+        }
+      }
+    };
 
-		observer.current = new IntersectionObserver(handleIntersection, {
-			threshold: 0.4,
-		});
+    observer.current = new IntersectionObserver(handleIntersection, {
+      threshold: 0.4,
+    });
 
-		const sectionElements = document.querySelectorAll("section");
-		for (const section of sectionElements) {
-			observer.current?.observe(section);
-		}
+    const sectionElements = document.querySelectorAll("section");
+    for (const section of sectionElements) {
+      observer.current?.observe(section);
+    }
 
-		return () => {
-			for (const section of sectionElements) {
-				if (observer.current) observer.current.unobserve(section);
-			}
-		};
-	}, []);
+    return () => {
+      for (const section of sectionElements) {
+        if (observer.current) observer.current.unobserve(section);
+      }
+    };
+  }, [callback, store]);
 };

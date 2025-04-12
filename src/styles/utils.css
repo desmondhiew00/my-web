@@ -27,3 +27,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.animate-rotate {
+  animation: rotate 5s linear infinite;
+}
