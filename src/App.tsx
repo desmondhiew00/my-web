@@ -3,10 +3,11 @@ import { Footer } from "@/components/section/footer";
 import { Header } from "@/components/section/header";
 import { Home } from "@/components/section/home";
 import { NavBar } from "@/components/section/navbar";
-import TagManager from "react-gtm-module";
 import { AppProvider } from "./context/app-provider";
 
 import "./i18n/init";
+import analytics from "./lib/firebase-analytics";
+import { logEvent } from "firebase/analytics";
 
 const Skills = lazy(() => import("@/components/section/skills"));
 const Works = lazy(() => import("@/components/section/works"));
@@ -14,8 +15,9 @@ const BackgroundTitle = lazy(() => import("@/components/background-title"));
 
 export default function Root() {
   useEffect(() => {
-    const tagManagerArgs = { gtmId: import.meta.env.VITE_GA_ID ?? "" };
-    TagManager.initialize(tagManagerArgs);
+    logEvent(analytics, "page_view", { page: "home" });
+    // const tagManagerArgs = { gtmId: import.meta.env.VITE_GA_ID ?? "" };
+    // TagManager.initialize(tagManagerArgs);
   }, []);
 
   return (

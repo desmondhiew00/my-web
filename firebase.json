@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "my-web-1a115",
     "public": "dist",
     "ignore": [
       "firebase.json",
