@@ -1,24 +1,22 @@
-import { lazy, useEffect } from "react";
 import { Footer } from "@/components/section/footer";
 import { Header } from "@/components/section/header";
 import { Home } from "@/components/section/home";
 import { NavBar } from "@/components/section/navbar";
+import { lazy } from "react";
 import { AppProvider } from "./context/app-provider";
 
 import "./i18n/init";
-import analytics from "./lib/firebase-analytics";
-import { logEvent } from "firebase/analytics";
+// import analytics from "./lib/firebase-analytics";
+// import { logEvent } from "firebase/analytics";
 
 const Skills = lazy(() => import("@/components/section/skills"));
 const Works = lazy(() => import("@/components/section/works"));
 const BackgroundTitle = lazy(() => import("@/components/background-title"));
 
 export default function Root() {
-  useEffect(() => {
-    logEvent(analytics, "page_view", { page: "home" });
-    // const tagManagerArgs = { gtmId: import.meta.env.VITE_GA_ID ?? "" };
-    // TagManager.initialize(tagManagerArgs);
-  }, []);
+  // useEffect(() => {
+  //   logEvent(analytics, "page_view", { page: "home" });
+  // }, []);
 
   return (
     <AppProvider>
