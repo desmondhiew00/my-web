@@ -16,8 +16,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 		<div
 			className={cn(
 				HEADER_HEIGHT.h,
-				"pl-[24px] sm:pl-[32px] pr-4 w-full flex justify-between items-center fixed z-20 top-0",
-				"glassmorphism",
+				"pl-[24px] sm:pl-[32px] pr-4 w-full flex justify-between items-center fixed z-20 top-0 pointer-events-none",
 				className,
 			)}
 		>
