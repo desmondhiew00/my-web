@@ -1,5 +1,3 @@
-"use client";
-
 import useMediaQuery from "@/hooks/use-media-query";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
 import { cn } from "@/lib/utils";

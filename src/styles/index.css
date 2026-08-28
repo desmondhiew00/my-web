@@ -1,14 +1,17 @@
+@import "@fontsource-variable/geist-mono";
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./utils.css";
-@import "./fonts.css";
+
+@theme {
+  --color-shell-indicator: #1a8f3c;
+}
 
 @layer base {
   :root {
     --background: #ffffff;
     --foreground: #171717;
-    --shell-indicator: #74ea28;
-    --font-geist-mono: "Geist Mono", monospace;
+    --font-geist-mono: "Geist Mono Variable", monospace;
   }
 
   html {
@@ -40,6 +43,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-shell-indicator: #74ea28;
   }
 }
 

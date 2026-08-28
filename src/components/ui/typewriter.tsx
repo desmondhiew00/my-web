@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { type HTMLMotionProps, motion } from "framer-motion";
 import { CursorBlinker } from "./cursor-blinker";
@@ -23,7 +21,7 @@ interface Props extends HTMLMotionProps<"p"> {
 	speed?: number;
 	delay?: number;
 	childDelay?: number;
-	shellIndicator?: boolean;
+	shellIndicator?: boolean | string;
 	cursor?: boolean;
 }
 
@@ -59,7 +57,9 @@ export const Typewriter: React.FC<Props> = ({
 			animate="visible"
 			{...rest}
 		>
-			{shellIndicator && <span className="font-semibold text-shell-indicator">{"> "}</span>}
+			{shellIndicator && (
+				<span className="font-semibold text-shell-indicator">{typeof shellIndicator === "string" ? `${shellIndicator} ` : "> "}</span>
+			)}
 			{parsedText.map((part, i) => {
 				if (typeof part === "string") {
 					return part.split("").map((char, j) => (

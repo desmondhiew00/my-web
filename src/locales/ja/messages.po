@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-28 22:53+0900\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ja\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/terminal.tsx:35
+msgid "desmond hiew — `full-stack developer`"
+msgstr "desmond hiew — `フルスタック開発者`"
+
+#: src/components/terminal.tsx:36
+msgid "I build things that work."
+msgstr "動くものを作ります。"
+
+#: src/components/terminal.tsx:81
+msgid "Last login"
+msgstr "最終ログイン"

@@ -1,5 +1,3 @@
-"use client";
-
 import Github from "@/assets/tech-stacks/github.svg?react";
 import LinkedIn from "@/assets/tech-stacks/linkedin.svg?react";
 import usePrefersColorScheme from "@/hooks/use-prefers-color-scheme";
@@ -23,9 +21,6 @@ export const Footer = () => {
         >
           <LinkedIn className="w-6 h-6" color="#0a66c2" />
         </LinkButton>
-      </div>
-      <div className="text-center text-xs">
-        <span>Made with ☕ by Desmond Hiew</span>
       </div>
     </div>
   );

@@ -1,20 +1,11 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import type { PropsWithChildren } from "react";
-import { useTranslation } from "react-i18next";
+import { useLingui } from "@lingui/react";
 import { HEADER_HEIGHT } from "./section/header";
 
 export enum SectionType {
   HOME = "home",
-  SKILLS = "skills",
-  WORKS = "works",
 }
-export const SectionTypes: SectionType[] = [
-  SectionType.HOME,
-  SectionType.SKILLS,
-  SectionType.WORKS,
-];
 
 interface Props {
   id: SectionType;
@@ -28,7 +19,7 @@ export const Section: React.FC<PropsWithChildren<Props>> = ({
   title,
 }) => {
   // const { height } = useScreenSize();
-  const { i18n } = useTranslation();
+  const { i18n } = useLingui();
 
   return (
     <section
@@ -44,7 +35,7 @@ export const Section: React.FC<PropsWithChildren<Props>> = ({
           <h2
             className={cn(
               "text-xl sm:text-3xl font-bold",
-              i18n.language === "en" ? "font-sans" : ""
+              i18n.locale === "en" ? "font-sans" : ""
             )}
           >
             {title}

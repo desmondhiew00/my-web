@@ -1,6 +1,6 @@
 import {
   type UseInViewOptions,
-  Variants,
+  type Variants,
   motion,
   useAnimation,
   useInView,
