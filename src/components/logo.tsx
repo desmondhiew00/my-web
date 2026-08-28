@@ -29,7 +29,10 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           className="rounded-full absolute"
         />
       </div>
-      <h1 className={cn("font-black text-xl sm:text-4xl", className)}>dh.</h1>
+      <h1 className={cn("font-black text-xl sm:text-4xl", className)}>
+        <span aria-hidden="true">dh.</span>
+        <span className="sr-only">Desmond Hiew (Kian Hooi Hiew) — Full-Stack Developer</span>
+      </h1>
     </motion.div>
   );
 };
