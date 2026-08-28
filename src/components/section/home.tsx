@@ -21,7 +21,7 @@ export function Home() {
         >
           <LinkButton
             href="https://github.com/desmondhiew00"
-            aria-label="github"
+            aria-label="GitHub profile"
           >
             <Github
               className="w-5 h-5"
@@ -30,7 +30,7 @@ export function Home() {
           </LinkButton>
           <LinkButton
             href="https://www.linkedin.com/in/desmond-hiew-ab1a201b1"
-            aria-label="linkedin"
+            aria-label="LinkedIn profile"
           >
             <LinkedIn className="w-6 h-6" color="#0a66c2" />
           </LinkButton>

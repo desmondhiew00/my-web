@@ -1,0 +1,12 @@
+# Desmond Hiew
+
+> Full-stack developer building web and mobile products with TypeScript, React and Node.
+
+Desmond Hiew (also known as Kian Hooi Hiew / kianhooi.hiew) is a full-stack
+developer. This site is a personal portfolio with a CLI-style home page.
+
+## Links
+
+- [Portfolio](https://desmondhiew.com/): Personal site and contact
+- [GitHub](https://github.com/desmondhiew00): Open source work
+- [LinkedIn](https://www.linkedin.com/in/desmond-hiew-ab1a201b1): Professional profile

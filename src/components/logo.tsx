@@ -22,7 +22,7 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           color={theme === "dark" ? "#fff" : "#000"}
         />
         <img
-          src="/avatar.jpeg"
+          src="/avatar.webp"
           alt="Desmond Hiew"
           width={isLargeScreen ? 40 : 28}
           height={isLargeScreen ? 40 : 28}

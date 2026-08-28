@@ -1,16 +1,9 @@
 import { motion } from "framer-motion";
-import type { PropsWithChildren } from "react";
+import type { ComponentProps } from "react";
 
-interface LinkButtonProps {
-  href: string;
-  ariaLabel?: string;
-}
-
-export const LinkButton: React.FC<PropsWithChildren<LinkButtonProps>> = ({
-  href,
-  ariaLabel,
-  children,
-}) => {
+export const LinkButton: React.FC<ComponentProps<typeof motion.a>> = (
+  props,
+) => {
   return (
     <motion.a
       whileHover={{
@@ -20,10 +13,7 @@ export const LinkButton: React.FC<PropsWithChildren<LinkButtonProps>> = ({
       whileTap={{ scale: 0.9 }}
       rel="noreferrer"
       target="_blank"
-      href={href}
-      aria-label={ariaLabel}
-    >
-      {children}
-    </motion.a>
+      {...props}
+    />
   );
 };

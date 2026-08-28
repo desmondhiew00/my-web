@@ -12,6 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+  build: { inlineStylesheets: "always" },
   integrations: [
     react({ babel: { plugins: ["@lingui/babel-plugin-lingui-macro"] } }),
   ],
