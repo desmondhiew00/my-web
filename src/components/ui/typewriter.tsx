@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { type HTMLMotionProps, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { CursorBlinker } from "./cursor-blinker";
 
 const letterVariants = {
@@ -58,12 +58,18 @@ export const Typewriter: React.FC<Props> = ({
 			{...rest}
 		>
 			{shellIndicator && (
-				<span className="font-semibold text-shell-indicator">{typeof shellIndicator === "string" ? `${shellIndicator} ` : "> "}</span>
+				<span className="font-semibold text-shell-indicator">
+					{typeof shellIndicator === "string" ? `${shellIndicator} ` : "> "}
+				</span>
 			)}
 			{parsedText.map((part, i) => {
 				if (typeof part === "string") {
 					return part.split("").map((char, j) => (
-						<motion.span className="whitespace-pre-wrap" key={`${char}-${i}-${j}`} variants={letterVariants}>
+						<motion.span
+							className="whitespace-pre-wrap"
+							key={`${char}-${i}-${j}`}
+							variants={letterVariants}
+						>
 							{char}
 						</motion.span>
 					));
@@ -71,9 +77,16 @@ export const Typewriter: React.FC<Props> = ({
 
 				if (part.type === "code") {
 					return (
-						<motion.code className={cn("text-[#c11646] dark:text-[#e8912d]")} key={`${part.content}-${i}`}>
+						<motion.code
+							className={cn("text-[#c11646] dark:text-[#e8912d]")}
+							key={`${part.content}-${i}`}
+						>
 							{part.content.split("").map((char, j) => (
-								<motion.span className="whitespace-pre-wrap" key={`${char}-${i}-${j}`} variants={letterVariants}>
+								<motion.span
+									className="whitespace-pre-wrap"
+									key={`${char}-${i}-${j}`}
+									variants={letterVariants}
+								>
 									{char}
 								</motion.span>
 							))}
@@ -93,7 +106,7 @@ const parseText = (text: string) => {
 	const regex = /`([^`]+)`|[^`]+/g;
 	let match: RegExpExecArray | null;
 
-	// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+	// biome-ignore lint/suspicious/noAssignInExpressions: idiomatic regex.exec loop
 	while ((match = regex.exec(text)) !== null) {
 		if (match[1]) {
 			parts.push({ type: "code", content: match[1] });

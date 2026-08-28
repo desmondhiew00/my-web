@@ -1,17 +1,26 @@
-import { cn } from "@/lib/utils";
 import { motion, useDragControls } from "framer-motion";
 import { type PropsWithChildren, useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface Props {
 	className?: string;
 	title?: string;
 }
 
-export const FinderWindow: React.FC<PropsWithChildren<Props>> = ({ children, className, title }) => {
+export const FinderWindow: React.FC<PropsWithChildren<Props>> = ({
+	children,
+	className,
+	title,
+}) => {
 	// Drag from the title bar only, so selecting text in the body still works.
 	const dragControls = useDragControls();
 	const ref = useRef<HTMLDivElement>(null);
-	const [bounds, setBounds] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
+	const [bounds, setBounds] = useState({
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+	});
 
 	// The window can be dropped anywhere on screen, but not past the edges.
 	useEffect(() => {
@@ -74,7 +83,9 @@ export const FinderWindow: React.FC<PropsWithChildren<Props>> = ({ children, cla
 					</motion.h2>
 				)}
 			</div>
-			<div className="w-full bg-gray-100 dark:bg-zinc-800 h-full overflow-auto flex">{children}</div>
+			<div className="w-full bg-gray-100 dark:bg-zinc-800 h-full overflow-auto flex">
+				{children}
+			</div>
 		</motion.div>
 	);
 };

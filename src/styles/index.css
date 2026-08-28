@@ -4,51 +4,51 @@
 @import "./utils.css";
 
 @theme {
-  --color-shell-indicator: #1a8f3c;
+	--color-shell-indicator: #1a8f3c;
 }
 
 @layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --font-geist-mono: "Geist Mono Variable", monospace;
-  }
+	:root {
+		--background: #ffffff;
+		--foreground: #171717;
+		--font-geist-mono: "Geist Mono Variable", monospace;
+	}
 
-  html {
-    scroll-behavior: smooth;
-  }
+	html {
+		scroll-behavior: smooth;
+	}
 
-  body {
-    color: var(--foreground);
-    background: var(--background);
-    font-synthesis: none;
-    font-family: var(--font-geist-mono);
-    font-size: 16px;
-  }
+	body {
+		color: var(--foreground);
+		background: var(--background);
+		font-synthesis: none;
+		font-family: var(--font-geist-mono);
+		font-size: 16px;
+	}
 
-  code {
-    font-family: inherit;
-  }
+	code {
+		font-family: inherit;
+	}
 }
 
 ::-moz-selection {
-  background: rgb(14 165 233 / 0.2);
+	background: rgb(14 165 233 / 0.2);
 }
 
 ::selection {
-  background: rgb(14 165 233 / 0.2);
+	background: rgb(14 165 233 / 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --color-shell-indicator: #74ea28;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+		--color-shell-indicator: #74ea28;
+	}
 }
 
 @media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
+	body {
+		font-size: 14px;
+	}
 }
