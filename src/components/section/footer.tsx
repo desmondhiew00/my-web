@@ -4,6 +4,10 @@ export const Footer = () => {
 	const [pos, setPos] = useState({ x: 0, y: 0 });
 	const [dragging, setDragging] = useState(false);
 	const origin = useRef({ x: 0, y: 0 });
+	const boxRef = useRef<HTMLDivElement>(null);
+
+	const clamp = (v: number, min: number, max: number) =>
+		Math.min(Math.max(v, min), max);
 
 	const onPointerDown = (e: React.PointerEvent) => {
 		e.currentTarget.setPointerCapture(e.pointerId);
@@ -12,14 +16,32 @@ export const Footer = () => {
 	};
 
 	const onPointerMove = (e: React.PointerEvent) => {
-		if (!dragging) return;
-		setPos({ x: e.clientX - origin.current.x, y: e.clientY - origin.current.y });
+		if (!dragging || !boxRef.current) return;
+		const rect = boxRef.current.getBoundingClientRect();
+		// rect already includes current translate, so back it out to get the layout origin
+		const doc = document.documentElement;
+		// page coords, so bounds are the whole scrollable area, not just the viewport
+		const baseX = rect.left + window.scrollX - pos.x;
+		const baseY = rect.top + window.scrollY - pos.y;
+		setPos({
+			x: clamp(
+				e.clientX - origin.current.x,
+				-baseX,
+				doc.scrollWidth - rect.width - baseX,
+			),
+			y: clamp(
+				e.clientY - origin.current.y,
+				-baseY,
+				doc.scrollHeight - rect.height - baseY,
+			),
+		});
 	};
 
 	return (
 		<div className="w-full py-4 space-y-2">
 			<div className="flex justify-center ">
 				<div
+					ref={boxRef}
 					className="space-y-1.5 px-4 touch-none max-w-sm sm:max-w-xl w-full"
 					style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
 				>
