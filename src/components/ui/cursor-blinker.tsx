@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const cursorVariants = (duration = 1) => ({
+const cursorVariants = (duration = 1): Variants => ({
 	blinking: {
 		opacity: [0, 0, 1, 1],
 		transition: {

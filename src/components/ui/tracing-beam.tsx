@@ -16,7 +16,6 @@ export const TracingBeam: React.FC<PropsWithChildren<Props>> = ({
 	const ref = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		container: containerRef,
-		layoutEffect: false,
 	});
 
 	const contentRef = useRef<HTMLDivElement>(null);

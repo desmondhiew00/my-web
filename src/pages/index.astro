@@ -5,63 +5,68 @@ import "@/styles/index.css";
 const site = "https://desmondhiew.com";
 const title = "Desmond Hiew — Full-Stack Developer";
 const description =
-  "Desmond Hiew (Kian Hooi Hiew / kianhooi.hiew) is a full-stack developer building web and mobile products with TypeScript, React and Node. Portfolio, links and contact.";
+    "Desmond Hiew (Kian Hooi Hiew / kianhooi.hiew) is a full-stack developer building web and mobile products with TypeScript, React and Node. Portfolio, links and contact.";
 const image = `${site}/avatar.webp`;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/icon.png" />
-    <link rel="apple-touch-icon" href="/apple-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="canonical" href={`${site}/`} />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/icon.png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="canonical" href={`${site}/`} />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#000000" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="creator" content="Desmond Hiew" />
-    <meta name="author" content="Desmond Hiew" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="theme-color" content="#000000" />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="creator" content="Desmond Hiew" />
+        <meta name="author" content="Desmond Hiew" />
 
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="profile" />
-    <meta property="og:url" content={`${site}/`} />
-    <meta property="og:site_name" content="Desmond Hiew" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={image} />
-    <meta property="og:image:width" content="320" />
-    <meta property="og:image:height" content="320" />
-    <meta property="og:image:alt" content="Desmond Hiew" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:url" content={`${site}/`} />
+        <meta property="og:site_name" content="Desmond Hiew" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:width" content="320" />
+        <meta property="og:image:height" content="320" />
+        <meta property="og:image:alt" content="Desmond Hiew" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
 
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Desmond Hiew",
-        alternateName: ["desmondhiew", "kianhooi.hiew", "Kian Hooi Hiew"],
-        givenName: "Kian Hooi",
-        familyName: "Hiew",
-        url: `${site}/`,
-        image,
-        jobTitle: "Full-Stack Developer",
-        description,
-        sameAs: [
-          "https://github.com/desmondhiew00",
-          "https://www.linkedin.com/in/desmond-hiew-ab1a201b1",
-        ],
-      })}
-    />
-  </head>
-  <body>
-    <div id="root"><App client:load /></div>
-  </body>
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Desmond Hiew",
+                alternateName: [
+                    "desmondhiew",
+                    "kianhooi.hiew",
+                    "Kian Hooi Hiew",
+                ],
+                givenName: "Kian Hooi",
+                familyName: "Hiew",
+                url: `${site}/`,
+                image,
+                jobTitle: "Full-Stack Developer",
+                description,
+                sameAs: [
+                    "https://github.com/desmondhiew00",
+                    "https://www.linkedin.com/in/desmond-hiew-ab1a201b1",
+                ],
+            })}
+        />
+    </head>
+    <body>
+        <div id="root"><App client:load /></div>
+    </body>
 </html>

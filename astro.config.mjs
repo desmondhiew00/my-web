@@ -13,7 +13,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
 	build: { inlineStylesheets: "always" },
-	integrations: [react({ babel: { plugins: ["@lingui/babel-plugin-lingui-macro"] } })],
+	integrations: [
+		react({
+			// compact silences babel's >500KB "deoptimised the styling" note on prebundled deps
+			babel: { compact: true, plugins: ["@lingui/babel-plugin-lingui-macro"] },
+		}),
+	],
 	vite: {
 		plugins: [
 			lingui(),

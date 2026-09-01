@@ -20,6 +20,8 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
+        env:
+          PUBLIC_WEB3FORM_KEY: ${{ secrets.PUBLIC_WEB3FORM_KEY }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

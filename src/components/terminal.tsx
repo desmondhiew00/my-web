@@ -1,156 +1,199 @@
 import { useLingui } from "@lingui/react/macro";
-import dayjs from "dayjs";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import Typewriter from "@/components/ui/typewriter";
+import { useTerminal } from "@/hooks/use-terminal";
+import { PROMPT } from "@/lib/terminal-commands";
 import { FinderWindow } from "./ui/finder-window";
 
-import "dayjs/locale/en";
-import "dayjs/locale/ja";
-import "dayjs/locale/zh-cn";
+/** Shared Typewriter setup: history is already-typed text, so it renders instantly. */
+const INSTANT = { cursor: false, speed: 0, childDelay: 0 } as const;
 
-const PROMPT = "desmond@hiew ~ %";
-
-interface Entry {
-	cmd: string;
-	out: string;
-}
+/** Keeps the view pinned to the bottom while the typewriter grows the content. */
+const useStickToBottom = () => {
+	const ref = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		const box = ref.current;
+		if (!box) return;
+		const stick = () => {
+			box.scrollTop = box.scrollHeight;
+		};
+		// typewriter reveals letters by flipping inline display, so watch attributes too
+		const mo = new MutationObserver(stick);
+		mo.observe(box, {
+			childList: true,
+			subtree: true,
+			characterData: true,
+			attributes: true,
+			attributeFilter: ["style"],
+		});
+		stick();
+		return () => mo.disconnect();
+	}, []);
+	return ref;
+};
 
 export const Terminal = () => {
-	const { t, i18n } = useLingui();
-	const locale = i18n.locale;
-	const [time, setTime] = useState("");
-	const [history, setHistory] = useState<Entry[]>([]);
-	const [input, setInput] = useState("");
-	const [cleared, setCleared] = useState(false);
+	const { t } = useLingui();
+	const {
+		time,
+		history,
+		input,
+		setInput,
+		cleared,
+		sending,
+		session,
+		flowLabel,
+		submitLine,
+		complete,
+		cancelFlow,
+		run,
+	} = useTerminal();
+
+	const scrollRef = useStickToBottom();
 	const inputRef = useRef<HTMLInputElement>(null);
-	const bottomRef = useRef<HTMLDivElement>(null);
+	const [toast, setToast] = useState("");
 
+	// Land in typing mode on load, but not on touch, where it would throw up the keyboard.
 	useEffect(() => {
-		dayjs.locale(locale.toLowerCase());
-		const format = locale === "en" ? "(dddd) MMM D HH:mm:ss" : "(dddd) MMMD日 HH:mm:ss";
-		setTime(dayjs().format(format));
-	}, [locale]);
-
-	const commands: Record<string, string> = {
-		whoami: t`desmond hiew — \`full-stack developer\``,
-		"cat about.txt": t`I build things that work.`,
-		"echo $STACK": "`mac` · `keyboard` · `browser`",
-		ls: "about.txt",
-		help: "available: `whoami`, `cat about.txt`, `echo $STACK`, `ls`, `clear`",
-	};
-
-	// The intro plays back the first three on load; the rest are there to be found.
-	const intro = ["whoami", "cat about.txt", "echo $STACK"];
-
-	// Commands type out like someone at a keyboard; output lands at once, as a shell does.
-	let at = 0.4;
-	const session = intro.map((cmd) => {
-		const cmdAt = at;
-		at += cmd.length * 0.05 + 0.4;
-		const outAt = at;
-		at += 0.6;
-		return { cmd, out: commands[cmd], cmdAt, outAt };
-	});
-	const endAt = at;
-
-	const run = (raw: string) => {
-		const cmd = raw.trim();
-		setInput("");
-		if (cmd === "clear") {
-			setHistory([]);
-			setCleared(true);
-			return;
-		}
-		// zsh names only the binary it failed to find, not the whole line
-		const out =
-			cmd in commands ? commands[cmd] : cmd && `zsh: command not found: ${cmd.split(/\s+/)[0]}`;
-		setHistory((prev) => [...prev, { cmd, out: out || "" }]);
-	};
-
-	useEffect(() => {
-		bottomRef.current?.scrollIntoView({ block: "nearest" });
+		if (window.matchMedia("(pointer: fine)").matches) inputRef.current?.focus();
 	}, []);
 
-	return (
-		<FinderWindow className="max-w-3xl" title="desmond@hiew — zsh">
-			{/* biome-ignore lint/a11y/useKeyWithClickEvents: the input inside is the real control */}
-			{/* biome-ignore lint/a11y/noStaticElementInteractions: click only refocuses the input */}
-			<div
-				className="p-3 min-h-[300px] max-h-[70vh] overflow-auto w-full text-sm sm:text-base cursor-text"
-				onClick={() => inputRef.current?.focus()}
-			>
-				{time && !cleared && (
-					<p className="mb-3 text-[10px] sm:text-xs text-gray-500">
-						{t`Last login`}: {time} on ttys001
-					</p>
-				)}
+	useEffect(() => {
+		if (!toast) return;
+		const id = setTimeout(() => setToast(""), 1500);
+		return () => clearTimeout(id);
+	}, [toast]);
 
-				{!cleared &&
-					session.map(({ cmd, out, cmdAt, outAt }) => (
-						<div key={cmd} className="mb-4">
+	// Selecting copies, then hands the shell straight back: clear the selection and refocus.
+	const handleMouseUp = () => {
+		const selection = window.getSelection();
+		const selected = selection?.toString().trim();
+		if (selected) {
+			navigator.clipboard?.writeText(selected).then(
+				() => setToast(t`copied`),
+				() => {},
+			);
+			selection?.removeAllRanges();
+		}
+		inputRef.current?.focus();
+	};
+
+	const promptClass = (isFlow: boolean) =>
+		isFlow ? "text-gray-500" : "font-semibold text-shell-indicator";
+
+	return (
+		<div className="w-full max-w-3xl relative z-10">
+			<FinderWindow title="desmond@hiew — zsh">
+				{/* biome-ignore lint/a11y/noStaticElementInteractions: mouseup only refocuses the input or copies a selection */}
+				<div
+					ref={scrollRef}
+					className="p-3 min-h-[300px] max-h-[70vh] overflow-auto w-full text-sm sm:text-base cursor-text"
+					onMouseUp={handleMouseUp}
+				>
+					{time && !cleared && (
+						<p className="mb-3 text-[10px] sm:text-xs text-gray-500">
+							{t`Last login`}: {time} on ttys001
+						</p>
+					)}
+
+					{!cleared &&
+						session.lines.map(({ cmd, out, cmdAt, outAt }) => (
+							<div key={cmd} className="mb-4">
+								<Typewriter
+									text={cmd}
+									shellIndicator={PROMPT}
+									cursor={false}
+									speed={0.05}
+									delay={cmdAt}
+									childDelay={0}
+								/>
+								<Typewriter text={out} shellIndicator={false} delay={outAt} {...INSTANT} />
+							</div>
+						))}
+
+					{history.map(({ cmd, out, prompt }, i) => (
+						// contact prompts are one continuous block, so no gap between them
+						<div key={`${cmd}-${i}`} className={prompt && !out ? "" : "mb-4"}>
 							<Typewriter
 								text={cmd}
-								shellIndicator={PROMPT}
-								cursor={false}
-								speed={0.05}
-								delay={cmdAt}
-								childDelay={0}
+								shellIndicator={prompt || PROMPT}
+								indicatorClassName={promptClass(Boolean(prompt))}
+								{...INSTANT}
 							/>
-							<Typewriter
-								text={out}
-								shellIndicator={false}
-								cursor={false}
-								speed={0}
-								delay={outAt}
-								childDelay={0}
-							/>
+							{out && <Typewriter text={out} shellIndicator={false} {...INSTANT} />}
 						</div>
 					))}
 
-				{history.map(({ cmd, out }, i) => (
-					<div key={`${cmd}-${i}`} className="mb-4">
-						<Typewriter
-							text={cmd}
-							shellIndicator={PROMPT}
-							cursor={false}
-							speed={0}
-							childDelay={0}
+					<motion.div
+						className="flex items-center"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: session.endAt }}
+					>
+						<span className={`shrink-0 ${promptClass(Boolean(flowLabel))}`}>
+							{flowLabel ?? PROMPT}&nbsp;
+						</span>
+						<input
+							ref={inputRef}
+							aria-label="terminal input"
+							className="flex-1 bg-transparent outline-none caret-slate-900 dark:caret-white disabled:opacity-50"
+							disabled={sending}
+							value={input}
+							spellCheck={false}
+							autoComplete="off"
+							autoCapitalize="off"
+							onChange={(e) => setInput(e.target.value)}
+							onKeyDown={(e) => {
+								// IME: enter/tab pick a candidate word, they aren't shell keys yet
+								if (e.nativeEvent.isComposing) return;
+								if (flowLabel && (e.key === "Escape" || (e.ctrlKey && e.key === "c"))) {
+									e.preventDefault();
+									cancelFlow(e.key === "c");
+									return;
+								}
+								if (e.key === "Enter") submitLine(input);
+								// keep focus in the shell like a real terminal
+								if (e.key === "Tab") {
+									e.preventDefault();
+									complete();
+								}
+							}}
 						/>
-						{out && (
-							<Typewriter
-								text={out}
-								shellIndicator={false}
-								cursor={false}
-								speed={0}
-								childDelay={0}
-							/>
-						)}
-					</div>
-				))}
+					</motion.div>
+				</div>
+			</FinderWindow>
 
+			{toast && (
 				<motion.div
-					className="flex items-center"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: endAt }}
+					className="fixed bottom-20 right-5 z-50 rounded-md bg-zinc-900/90 dark:bg-zinc-100/90 px-3 py-1.5 text-sm text-white dark:text-zinc-900 shadow-sm"
+					initial={{ opacity: 0, y: 4 }}
+					animate={{ opacity: 1, y: 0 }}
+					role="status"
 				>
-					<span className="font-semibold text-shell-indicator shrink-0">{PROMPT}&nbsp;</span>
-					<input
-						ref={inputRef}
-						aria-label="terminal input"
-						className="flex-1 bg-transparent outline-none caret-slate-900 dark:caret-white"
-						value={input}
-						spellCheck={false}
-						autoComplete="off"
-						autoCapitalize="off"
-						onChange={(e) => setInput(e.target.value)}
-						onKeyDown={(e) => e.key === "Enter" && run(input)}
-					/>
+					{toast}
 				</motion.div>
-				<div ref={bottomRef} />
-			</div>
-		</FinderWindow>
+			)}
+
+			{/* shortcut for people who won't type: runs the same command */}
+			{!flowLabel && !sending && (
+				<div className="fixed bottom-5 right-5 z-50">
+					<Button
+						className="rounded-full border border-gray-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 px-4 py-2 text-sm shadow-sm"
+						onClick={() => {
+							inputRef.current?.focus();
+							run("contact");
+							requestAnimationFrame(() =>
+								inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+							);
+						}}
+					>
+						contact
+					</Button>
+				</div>
+			)}
+		</div>
 	);
 };
 

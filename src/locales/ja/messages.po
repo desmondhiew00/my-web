@@ -13,14 +13,99 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/terminal.tsx:35
-msgid "desmond hiew — `full-stack developer`"
-msgstr "desmond hiew — `フルスタック開発者`"
+#. placeholder {0}: draft.email
+#: src/hooks/use-terminal.tsx:83
+msgid "✓ sent — i'll reply to {0}"
+msgstr "✓ 送信しました — {0} に返信します"
 
-#: src/components/terminal.tsx:36
+#: src/hooks/use-terminal.tsx:121
+msgid "✗ enough for one visit — mail me directly: {EMAIL}"
+msgstr "✗ 今回はここまで — 直接メールしてください: {EMAIL}"
+
+#: src/hooks/use-terminal.tsx:83
+msgid "✗ failed — mail me directly: {EMAIL}"
+msgstr "✗ 送信失敗 — 直接メールしてください: {EMAIL}"
+
+#: src/lib/terminal-commands.tsx:64
+msgid "clear the screen"
+msgstr "画面をクリア"
+
+#: src/lib/terminal-commands.tsx:37
+msgid "Commands"
+msgstr "コマンド"
+
+#: src/components/terminal.tsx:75
+msgid "copied"
+msgstr "コピーしました"
+
+#: src/lib/terminal-commands.tsx:49
+msgid "desmond hiew — full-stack developer"
+msgstr "desmond hiew — フルスタック開発者"
+
+#: src/lib/terminal-commands.tsx:58
+msgid "Desmond Hiew — full-stack developer. Welcome to my shell."
+msgstr "Desmond Hiew — フルスタック開発者。私のシェルへようこそ。"
+
+#: src/lib/terminal-commands.tsx:50
 msgid "I build things that work."
 msgstr "動くものを作ります。"
 
-#: src/components/terminal.tsx:81
+#: src/components/terminal.tsx:97
 msgid "Last login"
 msgstr "最終ログイン"
+
+#: src/lib/terminal-commands.tsx:54
+msgid "links"
+msgstr "リンク"
+
+#: src/lib/terminal-commands.tsx:61
+msgid "list files"
+msgstr "ファイルを一覧表示"
+
+#: src/hooks/use-terminal.tsx:103
+msgid "message must be at least 10 characters"
+msgstr "メッセージは10文字以上必要です"
+
+#: src/hooks/use-terminal.tsx:101
+msgid "name cannot be empty"
+msgstr "名前を入力してください"
+
+#: src/hooks/use-terminal.tsx:102
+msgid "not an email"
+msgstr "メールアドレスの形式ではありません"
+
+#: src/lib/terminal-commands.tsx:62
+msgid "open link in new tab"
+msgstr "新しいタブでリンクを開く"
+
+#: src/lib/terminal-commands.tsx:54
+msgid "or type"
+msgstr "または入力"
+
+#: src/lib/terminal-commands.tsx:60
+msgid "print a file"
+msgstr "ファイルを表示"
+
+#: src/lib/terminal-commands.tsx:63
+msgid "send me a message"
+msgstr "メッセージを送る"
+
+#: src/hooks/use-terminal.tsx:78
+msgid "sending..."
+msgstr "送信中..."
+
+#: src/lib/terminal-commands.tsx:44
+msgid "Try"
+msgstr "例"
+
+#: src/lib/terminal-commands.tsx:40
+msgid "Variables"
+msgstr "変数"
+
+#: src/lib/terminal-commands.tsx:59
+msgid "who you're talking to"
+msgstr "話している相手"
+
+#: src/hooks/use-terminal.tsx:124
+msgid "write me a message. ctrl-c to cancel."
+msgstr "私にメッセージ。ctrl-c でキャンセル。"

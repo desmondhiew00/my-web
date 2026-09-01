@@ -13,14 +13,99 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/terminal.tsx:35
-msgid "desmond hiew — `full-stack developer`"
-msgstr "desmond hiew — `全栈开发劳工`"
+#. placeholder {0}: draft.email
+#: src/hooks/use-terminal.tsx:83
+msgid "✓ sent — i'll reply to {0}"
+msgstr "✓ 已发送 — 我会回复到 {0}"
 
-#: src/components/terminal.tsx:36
+#: src/hooks/use-terminal.tsx:121
+msgid "✗ enough for one visit — mail me directly: {EMAIL}"
+msgstr "✗ 这次就到这吧 — 直接邮件联系我: {EMAIL}"
+
+#: src/hooks/use-terminal.tsx:83
+msgid "✗ failed — mail me directly: {EMAIL}"
+msgstr "✗ 发送失败 — 直接邮件联系我: {EMAIL}"
+
+#: src/lib/terminal-commands.tsx:64
+msgid "clear the screen"
+msgstr "清屏"
+
+#: src/lib/terminal-commands.tsx:37
+msgid "Commands"
+msgstr "命令"
+
+#: src/components/terminal.tsx:75
+msgid "copied"
+msgstr "已复制"
+
+#: src/lib/terminal-commands.tsx:49
+msgid "desmond hiew — full-stack developer"
+msgstr "desmond hiew — 全栈开发者"
+
+#: src/lib/terminal-commands.tsx:58
+msgid "Desmond Hiew — full-stack developer. Welcome to my shell."
+msgstr "Desmond Hiew — 全栈开发者。欢迎来到我的 shell。"
+
+#: src/lib/terminal-commands.tsx:50
 msgid "I build things that work."
-msgstr "做能跑起来的东西。"
+msgstr "做能用的东西。"
 
-#: src/components/terminal.tsx:81
+#: src/components/terminal.tsx:97
 msgid "Last login"
-msgstr "上次登录时间"
+msgstr "上次登录"
+
+#: src/lib/terminal-commands.tsx:54
+msgid "links"
+msgstr "链接"
+
+#: src/lib/terminal-commands.tsx:61
+msgid "list files"
+msgstr "列出文件"
+
+#: src/hooks/use-terminal.tsx:103
+msgid "message must be at least 10 characters"
+msgstr "留言至少需要 10 个字符"
+
+#: src/hooks/use-terminal.tsx:101
+msgid "name cannot be empty"
+msgstr "名字不能为空"
+
+#: src/hooks/use-terminal.tsx:102
+msgid "not an email"
+msgstr "不是有效的邮箱"
+
+#: src/lib/terminal-commands.tsx:62
+msgid "open link in new tab"
+msgstr "在新标签页打开链接"
+
+#: src/lib/terminal-commands.tsx:54
+msgid "or type"
+msgstr "或输入"
+
+#: src/lib/terminal-commands.tsx:60
+msgid "print a file"
+msgstr "显示文件内容"
+
+#: src/lib/terminal-commands.tsx:63
+msgid "send me a message"
+msgstr "给我留言"
+
+#: src/hooks/use-terminal.tsx:78
+msgid "sending..."
+msgstr "发送中..."
+
+#: src/lib/terminal-commands.tsx:44
+msgid "Try"
+msgstr "尝试"
+
+#: src/lib/terminal-commands.tsx:40
+msgid "Variables"
+msgstr "变量"
+
+#: src/lib/terminal-commands.tsx:59
+msgid "who you're talking to"
+msgstr "我是谁"
+
+#: src/hooks/use-terminal.tsx:124
+msgid "write me a message. ctrl-c to cancel."
+msgstr "给我的讯息。ctrl-c 取消。"

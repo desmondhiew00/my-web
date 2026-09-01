@@ -4,7 +4,7 @@
 @import "./utils.css";
 
 @theme {
-	--color-shell-indicator: #1a8f3c;
+	--color-shell-indicator: var(--color-green-700);
 }
 
 @layer base {
@@ -43,7 +43,7 @@
 	:root {
 		--background: #0a0a0a;
 		--foreground: #ededed;
-		--color-shell-indicator: #74ea28;
+		--color-shell-indicator: var(--color-lime-400);
 	}
 }
 
