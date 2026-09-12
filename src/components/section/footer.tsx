@@ -6,8 +6,7 @@ export const Footer = () => {
 	const origin = useRef({ x: 0, y: 0 });
 	const boxRef = useRef<HTMLDivElement>(null);
 
-	const clamp = (v: number, min: number, max: number) =>
-		Math.min(Math.max(v, min), max);
+	const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
 
 	const onPointerDown = (e: React.PointerEvent) => {
 		e.currentTarget.setPointerCapture(e.pointerId);
@@ -24,16 +23,8 @@ export const Footer = () => {
 		const baseX = rect.left + window.scrollX - pos.x;
 		const baseY = rect.top + window.scrollY - pos.y;
 		setPos({
-			x: clamp(
-				e.clientX - origin.current.x,
-				-baseX,
-				doc.scrollWidth - rect.width - baseX,
-			),
-			y: clamp(
-				e.clientY - origin.current.y,
-				-baseY,
-				doc.scrollHeight - rect.height - baseY,
-			),
+			x: clamp(e.clientX - origin.current.x, -baseX, doc.scrollWidth - rect.width - baseX),
+			y: clamp(e.clientY - origin.current.y, -baseY, doc.scrollHeight - rect.height - baseY),
 		});
 	};
 
