@@ -2,9 +2,7 @@ import { t } from "@lingui/core/macro";
 
 export const PROMPT = "desmond@hiew ~ %";
 
-export const EMAIL = "desmond.hiew88@gmail.com";
-
-export const STEPS = ["name", "email", "message"] as const;
+export const EMAIL = "contact@desmondhiew.com";
 
 /** `open x` shells out to the browser instead of printing; `cat links.txt` lists the same urls. */
 export const LINKS: Record<string, string> = {
@@ -12,9 +10,10 @@ export const LINKS: Record<string, string> = {
 	linkedin: "https://www.linkedin.com/in/desmond-hiew-ab1a201b1",
 };
 
-export const LINK_COMMANDS: Record<string, string> = Object.fromEntries(
-	Object.entries(LINKS).map(([name, url]) => [`open ${name}`, url]),
-);
+export const LINK_COMMANDS: Record<string, string> = {
+	...Object.fromEntries(Object.entries(LINKS).map(([name, url]) => [`open ${name}`, url])),
+	contact: `mailto:${EMAIL}`,
+};
 
 const LINKS_FILE = "links.txt";
 
@@ -60,7 +59,7 @@ export const buildCommands = (): Record<string, string> => ({
 		["cat", "$arg", t`print a file`],
 		["ls", "", t`list files`],
 		["open", "$LINK", t`open link in new tab`],
-		["contact", "", t`send me a message`],
+		["contact", "", t`email me`],
 		["clear", "", t`clear the screen`],
 	]),
 });

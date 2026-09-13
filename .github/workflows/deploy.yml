@@ -17,8 +17,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
-        env:
-          PUBLIC_WEB3FORM_KEY: ${{ secrets.PUBLIC_WEB3FORM_KEY }}
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

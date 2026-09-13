@@ -36,20 +36,8 @@ const useStickToBottom = () => {
 
 export const Terminal = () => {
 	const { t } = useLingui();
-	const {
-		time,
-		history,
-		input,
-		setInput,
-		cleared,
-		sending,
-		session,
-		flowLabel,
-		submitLine,
-		complete,
-		cancelFlow,
-		run,
-	} = useTerminal();
+	const { time, history, input, setInput, cleared, session, submitLine, complete, run } =
+		useTerminal();
 
 	const scrollRef = useStickToBottom();
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -80,8 +68,7 @@ export const Terminal = () => {
 		inputRef.current?.focus();
 	};
 
-	const promptClass = (isFlow: boolean) =>
-		isFlow ? "text-gray-500" : "font-semibold text-shell-indicator";
+	const promptClass = "font-semibold text-shell-indicator";
 
 	return (
 		<div className="w-full max-w-3xl relative z-10">
@@ -113,13 +100,12 @@ export const Terminal = () => {
 							</div>
 						))}
 
-					{history.map(({ cmd, out, prompt }, i) => (
-						// contact prompts are one continuous block, so no gap between them
-						<div key={`${cmd}-${i}`} className={prompt && !out ? "" : "mb-4"}>
+					{history.map(({ cmd, out }, i) => (
+						<div key={`${cmd}-${i}`} className="mb-4">
 							<Typewriter
 								text={cmd}
-								shellIndicator={prompt || PROMPT}
-								indicatorClassName={promptClass(Boolean(prompt))}
+								shellIndicator={PROMPT}
+								indicatorClassName={promptClass}
 								{...INSTANT}
 							/>
 							{out && <Typewriter text={out} shellIndicator={false} {...INSTANT} />}
@@ -132,14 +118,11 @@ export const Terminal = () => {
 						animate={{ opacity: 1 }}
 						transition={{ delay: session.endAt }}
 					>
-						<span className={`shrink-0 ${promptClass(Boolean(flowLabel))}`}>
-							{flowLabel ?? PROMPT}&nbsp;
-						</span>
+						<span className={`shrink-0 ${promptClass}`}>{PROMPT}&nbsp;</span>
 						<input
 							ref={inputRef}
 							aria-label="terminal input"
 							className="flex-1 bg-transparent outline-none caret-slate-900 dark:caret-white disabled:opacity-50"
-							disabled={sending}
 							value={input}
 							spellCheck={false}
 							autoComplete="off"
@@ -148,11 +131,6 @@ export const Terminal = () => {
 							onKeyDown={(e) => {
 								// IME: enter/tab pick a candidate word, they aren't shell keys yet
 								if (e.nativeEvent.isComposing) return;
-								if (flowLabel && (e.key === "Escape" || (e.ctrlKey && e.key === "c"))) {
-									e.preventDefault();
-									cancelFlow(e.key === "c");
-									return;
-								}
 								if (e.key === "Enter") submitLine(input);
 								// keep focus in the shell like a real terminal
 								if (e.key === "Tab") {
@@ -177,22 +155,20 @@ export const Terminal = () => {
 			)}
 
 			{/* shortcut for people who won't type: runs the same command */}
-			{!flowLabel && !sending && (
-				<div className="fixed bottom-5 right-5 z-50">
-					<Button
-						className="rounded-full border border-gray-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 px-4 py-2 text-sm shadow-sm"
-						onClick={() => {
-							inputRef.current?.focus();
-							run("contact");
-							requestAnimationFrame(() =>
-								inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
-							);
-						}}
-					>
-						contact
-					</Button>
-				</div>
-			)}
+			<div className="fixed bottom-5 right-5 z-50">
+				<Button
+					className="rounded-full border border-gray-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 px-4 py-2 text-sm shadow-sm"
+					onClick={() => {
+						inputRef.current?.focus();
+						run("contact");
+						requestAnimationFrame(() =>
+							inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+						);
+					}}
+				>
+					contact
+				</Button>
+			</div>
 		</div>
 	);
 };
