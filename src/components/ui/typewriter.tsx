@@ -130,4 +130,10 @@ const parseText = (text: string): Part[] => {
 	return parts;
 };
 
+/** Output with the role markers stripped — what a copy should land on the clipboard. */
+export const plainText = (text: string) =>
+	parseText(text)
+		.map((part) => part.content)
+		.join("");
+
 export default Typewriter;

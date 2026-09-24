@@ -17,6 +17,24 @@ export const LINK_COMMANDS: Record<string, string> = {
 
 const LINKS_FILE = "links.txt";
 
+/** What `ls` lists, what `cat` can print, and the arguments the touch rail offers for `cat`. */
+export const FILES = ["about.txt", "contact.txt", LINKS_FILE];
+
+/**
+ * Touch mode's key rows. Same candidates tab completion offers, narrowed in the same
+ * two stages: pick a verb, then pick its argument. `args` absent means the verb runs alone.
+ */
+export const RAIL: { verb: string; args?: string[] }[] = [
+	{ verb: "whoami" },
+	{ verb: "cat", args: FILES },
+	{ verb: "ls" },
+	{ verb: "open", args: Object.keys(LINKS) },
+	{ verb: "echo", args: ["$STACK", "$LINK"] },
+	{ verb: "contact" },
+	{ verb: "help" },
+	{ verb: "clear" },
+];
+
 /** The intro plays these back on load; the rest are there to be found. */
 export const INTRO = ["help"];
 
@@ -49,7 +67,7 @@ export const buildCommands = (): Record<string, string> => ({
 	"cat about.txt": t`I build things that work.`,
 	"echo $STACK": "mac · keyboard · browser",
 	"echo $LINK": Object.keys(LINKS).join(" "),
-	ls: `about.txt  contact.txt  ${LINKS_FILE}`,
+	ls: FILES.join("  "),
 	"cat contact.txt": `${EMAIL}\n#${t`links`}#: \`cat ${LINKS_FILE}\`\n#${t`or type`}# \`contact\``,
 	[`cat ${LINKS_FILE}`]: Object.entries(LINKS)
 		.map(([name, url]) => `${name.padEnd(10)}${url}`)

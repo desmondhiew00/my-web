@@ -83,3 +83,4 @@ terraform.rc
 # ---------------------------------------------------------------------------- #
 .astro/
 .playwright-mcp/
+.claude/skills/frontend-design/

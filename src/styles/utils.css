@@ -30,3 +30,13 @@
 .animate-rotate {
 	animation: rotate 5s linear infinite;
 }
+
+/* The command rail scrolls sideways; a scrollbar under the keys would read as chrome. */
+.no-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
